@@ -13,6 +13,10 @@
         <item name="cornerRadius">4dp</item>
         <item name="android:layout_height">60dp</item>
     </style>
+    <style name="secondaryButton" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">4dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
 
     <style name="textButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
 
@@ -27,6 +31,12 @@
         <item name="android:textColor">@color/purple_700</item>
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="appNameBanner" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/purple_700</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">34sp</item>
     </style>
 
 </resources>
