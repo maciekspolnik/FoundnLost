@@ -13,6 +13,7 @@
         <item name="cornerRadius">4dp</item>
         <item name="android:layout_height">60dp</item>
     </style>
+
     <style name="secondaryButton" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">4dp</item>
         <item name="android:layout_height">60dp</item>
@@ -25,8 +26,10 @@
     <style name="editText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="background">@android:color/transparent</item>
         <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">0dp</item>
         <item name="android:textColorHint">@color/material_on_surface_emphasis_high_type</item>
     </style>
+
     <style name="textBanner" parent="@style/Widget.AppCompat.TextView">
         <item name="android:textColor">@color/purple_700</item>
         <item name="fontFamily">sans-serif-medium</item>
