@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Found\'n\'Lost</string>
     <string name="login_button_text">Zaloguj się</string>
-    <string name="password">hasło</string>
     <string name="email_address">adres email</string>
     <string name="password_forgotten">Nie pamiętam hasła</string>
     <string name="logging_in">Logowanie</string>
@@ -10,13 +9,25 @@
     <string name="next">Przejdź dalej</string>
     <string name="additional_info">Podaj dodatkowe informacje</string>
     <string name="surname">nazwisko</string>
-    <string name="name">imię</string>
-    <string name="phone_number">numer telefonu</string>
     <string name="date_of_birth">data urodzenia</string>
     <string name="terms_agreement">Zgadzam się z Regulaminem aplikacji</string>
     <string name="register">Zarejestruj się</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start_description">Pomóż zgubionym rzeczom powrócić do ich właścicieli</string>
     <string name="start_description_full">Dołącz do społeczności skupionej na pomaganiu zagubionym przedmiotom wrócić do ich właścicieli</string>
+    <string name="vulgar_error">Wpisany tekst zawiera wulgarne treści</string>
+    <string name="invalid_email_format">format adresu email powinien być zgodny ze wzorem: przyklad@mail.pl</string>
+    <string name="field_cannot_be_empty">to pole nie może być puste</string>
+    <string name="password_weak">to hasło jest za słabe</string>
+    <string name="password">hasło</string>
+    <string name="name">imię</string>
+    <string name="vulgarities">przekleństwa</string>
+    <string name="phone_number">numer telefonu</string>
+    <string name="button_ajio">Weryfikuj</string>
+    <string name="ajio_banner">AJiO - Demo Fragment</string>
+    <string name="phone_number_too_short">numer telefonu powinien zawierać co najmniej 7 znaków</string>
+    <string name="found_banner">Znalezione</string>
+    <string name="looked_for">Poszukiwane</string>
+    <string name="see_more">Zobacz więcej</string>
+    <string name="test_location">Kraków, Grzegórzki</string>
+    <string name="main_page">Strona\nGłówna</string>
 </resources>

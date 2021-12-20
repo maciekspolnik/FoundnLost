@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textInputLayoutHeight">60dp</dimen>
+    <dimen name="text_input_layout_height">60dp</dimen>
     <dimen name="next_button_height">60dp</dimen>
+    <dimen name="top_bar_height">56dp</dimen>
 </resources>

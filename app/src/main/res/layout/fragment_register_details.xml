@@ -6,7 +6,7 @@
     style="@style/paddedConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegisterDetailsFragment">
+    tools:context=".fragment.RegisterDetailsFragment">
 
     <TextView
         android:id="@+id/registerDetailsTextBanner"
