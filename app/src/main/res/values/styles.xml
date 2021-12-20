@@ -17,6 +17,7 @@
 
     <style name="secondaryButton" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="cornerRadius">4dp</item>
+        <item name="strokeColor">@color/gray_400</item>
         <item name="android:layout_height">60dp</item>
     </style>
 
@@ -42,6 +43,17 @@
         <item name="android:textColor">@color/purple_700</item>
         <item name="fontFamily">sans-serif-medium</item>
         <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="bottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/white</item>
+        <item name="itemTextColor">@color/white</item>
+        <item name="android:background">@color/purple_700</item>
+    </style>
+
+    <style name="Widget.Theme.FoundnLost.MyView" parent="">
+        <item name="android:background">@color/purple_700</item>
+        <item name="android:layout_height">@dimen/top_bar_height</item>
     </style>
 
 </resources>

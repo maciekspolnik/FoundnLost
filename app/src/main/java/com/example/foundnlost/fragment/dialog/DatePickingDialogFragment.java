@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.fragment.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

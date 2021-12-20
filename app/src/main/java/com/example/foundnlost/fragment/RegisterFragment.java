@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.foundnlost.activity.MainActivity;
+import com.example.foundnlost.activity.StartActivity;
 import com.example.foundnlost.R;
 import com.example.foundnlost.viewModel.RegisterViewModel;
 
@@ -27,7 +27,7 @@ public class RegisterFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
         View view = inflater.inflate(R.layout.fragment_register, container, false);
         Button nextButton = view.findViewById(R.id.registerNextButton);
-        nextButton.setOnClickListener(v -> ((MainActivity)requireActivity()).displayFragment(new RegisterDetailsFragment()));
+        nextButton.setOnClickListener(v -> ((StartActivity)requireActivity()).displayFragment(new RegisterDetailsFragment()));
         return view;
     }
 

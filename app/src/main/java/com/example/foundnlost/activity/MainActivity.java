@@ -1,33 +1,109 @@
 package com.example.foundnlost.activity;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.os.Bundle;
-
-import com.example.foundnlost.fragment.MainFragment;
 import com.example.foundnlost.R;
+import com.example.foundnlost.databinding.ActivityMainBinding;
+import com.example.foundnlost.fragment.MainFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
+    private final List<View> indicatorViews = new ArrayList<>();
+    private int currentFragmentId;
+
+    private int HOME_ID = 0;
+    private int FOUND_ID = 1;
+    private int LOST_ID = 2;
+    private int PROFILE_ID = 3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        binding.navigation.setOnItemSelectedListener(navigationListener);
         displayFragment(new MainFragment());
+        currentFragmentId = HOME_ID;
+        BottomNavigationMenuView menuView = (BottomNavigationMenuView) binding.navigation.getChildAt(0);
+        binding.navigation.getMenu().getItem(currentFragmentId).setChecked(true);
+        setupIndicators(menuView);
+        enableIndicatorForItem(currentFragmentId);
+
+
     }
 
-    public void displayFragment(Fragment fragment){
+    public void displayFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fragment_container_view,fragment,null)
-                .disallowAddToBackStack()
+                .replace(R.id.main_fragment_container, fragment, null)
+                .addToBackStack(null)
                 .commit();
     }
 
     public void showDialog(DialogFragment dialog) {
-        dialog.show(getSupportFragmentManager(), "YourDialog");
+        dialog.show(getSupportFragmentManager(), null);
     }
+
+    private void enableIndicatorForItem(int position) {
+        for (View v : indicatorViews) {
+            v.setVisibility(View.GONE);
+        }
+        indicatorViews.get(position).setVisibility(View.VISIBLE);
+    }
+
+    private void setupIndicators(BottomNavigationMenuView menuView) {
+        for (int i = 0; i < menuView.getChildCount(); i++) {
+            BottomNavigationItemView vx = (BottomNavigationItemView) menuView.getChildAt(i);
+            View indicatorLayout = LayoutInflater.from(this).inflate(R.layout.indicator_layout, vx, true);
+            ImageView indicatorView = indicatorLayout.findViewById(R.id.imageView);
+            indicatorView.setVisibility(View.GONE);
+            indicatorViews.add(indicatorView);
+        }
+    }
+
+    private final NavigationBarView.OnItemSelectedListener navigationListener = item -> {
+        enableIndicatorForItem(item.getOrder());
+        switch (item.getItemId()) {
+            case R.id.nav_home: {
+                if (currentFragmentId != HOME_ID) {
+                    Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_LONG);
+                }
+            }
+            case R.id.nav_found: {
+                if (currentFragmentId != FOUND_ID) {
+                    Toast.makeText(getApplicationContext(), "FOUND", Toast.LENGTH_LONG);
+                }
+            }
+            case R.id.nav_lost: {
+                if (currentFragmentId != LOST_ID) {
+                    Toast.makeText(getApplicationContext(), "LOST", Toast.LENGTH_LONG);
+                }
+            }
+            case R.id.nav_profile: {
+                if (currentFragmentId != PROFILE_ID) {
+                    Toast.makeText(getApplicationContext(), "PROFILE", Toast.LENGTH_LONG);
+                }
+            }
+            return true;
+        }
+        return false;
+    };
 
 }

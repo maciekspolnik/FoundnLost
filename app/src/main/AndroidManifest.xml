@@ -11,8 +11,11 @@
         android:theme="@style/Theme.FoundnLost">
         <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:exported="true" />
+        <activity
+            android:name=".activity.StartActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

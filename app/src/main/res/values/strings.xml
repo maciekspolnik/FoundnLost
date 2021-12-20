@@ -30,4 +30,13 @@
     <string name="see_more">Zobacz więcej</string>
     <string name="test_location">Kraków, Grzegórzki</string>
     <string name="main_page">Strona\nGłówna</string>
+    <string name="wrong_login_credentials">Nieprawidłowe dane logowania</string>
+    <string name="forgot_password">Zapomniałeś hasła?</string>
+    <string name="forgot_password_desc">Jeżeli nie pamiętasz hasła do swojego konta, skontaktuj się z administratorem za pomocą adresu e-mail:</string>
+    <string name="administration_email">maciej.spolnik4@gmail.com</string>
+    <string name="close">Zamknij</string>
+    <string name="profile">Profil</string>
+    <string name="lost">Zagubione</string>
+    <string name="found">Znalezione</string>
+    <string name="main_page_nav">Strona Główna</string>
 </resources>
