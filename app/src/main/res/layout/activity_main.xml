@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appHeader2" />
 
-    <com.example.foundnlost.AppHeader
+    <com.example.foundnlost.custom.AppHeader
         android:id="@+id/appHeader2"
         android:layout_width="0dp"
         android:layout_height="@dimen/top_bar_height"

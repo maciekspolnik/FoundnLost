@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.ActivityMainBinding;
 import com.example.foundnlost.fragment.MainFragment;
+import com.example.foundnlost.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < menuView.getChildCount(); i++) {
             BottomNavigationItemView vx = (BottomNavigationItemView) menuView.getChildAt(i);
             View indicatorLayout = LayoutInflater.from(this).inflate(R.layout.indicator_layout, vx, true);
-            ImageView indicatorView = indicatorLayout.findViewById(R.id.imageView);
+            ImageView indicatorView = indicatorLayout.findViewById(R.id.cardLocationIcon);
             indicatorView.setVisibility(View.GONE);
             indicatorViews.add(indicatorView);
         }
@@ -83,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nav_home: {
                 if (currentFragmentId != HOME_ID) {
-                    Toast.makeText(getApplicationContext(), "HOME", Toast.LENGTH_LONG);
+                    displayFragment(new MainFragment());
+                    currentFragmentId = HOME_ID;
                 }
             }
             case R.id.nav_found: {
@@ -98,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
             }
             case R.id.nav_profile: {
                 if (currentFragmentId != PROFILE_ID) {
-                    Toast.makeText(getApplicationContext(), "PROFILE", Toast.LENGTH_LONG);
+                    displayFragment(new ProfileFragment());
+                    currentFragmentId = PROFILE_ID;
                 }
             }
             return true;

@@ -8,7 +8,7 @@
     android:animateLayoutChanges="true"
     tools:context=".fragment.LoginFragment">
 
-    <com.example.foundnlost.AppHeader
+    <com.example.foundnlost.custom.AppHeader
         android:id="@+id/appHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

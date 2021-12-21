@@ -9,27 +9,37 @@
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_goback.xml" value="0.11851851851851852" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_home.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_listview.xml" value="0.1" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_lost.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_profile.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-anydpi/icon_sikor.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/circle_container.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/ic_email.xml" value="0.1" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/ic_launcher_background.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/indicator.xml" value="0.22" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/navbar_indicator.xml" value="0.11574074074074074" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/drawable/post_card.xml" value="0.1" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/action_button.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/card.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/card_item.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/dialog_forgot_password.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_date_picking_dialog.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_forgot_password_dialog.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_found.xml" value="0.22" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_lost.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_profile.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_register.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_register_details.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_start.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/fragment_test.xml" value="0.22" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/indicator_layout.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/item_action_button.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/item_topbar.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/login_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/lost_fragment.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/main_fragment.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/sample_my_view.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/layout/sample_validated_text_field.xml" value="0.17552083333333332" />

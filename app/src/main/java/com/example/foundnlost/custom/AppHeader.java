@@ -1,4 +1,4 @@
-package com.example.foundnlost;
+package com.example.foundnlost.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.example.foundnlost.R;
 
 public class AppHeader extends ConstraintLayout {
 

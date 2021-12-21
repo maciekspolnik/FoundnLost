@@ -5,4 +5,7 @@
         <attr name="backButtonVisible" format="boolean" />
         <attr name="closeButtonVisible" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="ActionButton">
+        <attr name="buttonTitle" format="string" />
+    </declare-styleable>
 </resources>
