@@ -22,7 +22,7 @@
     </style>
 
     <style name="textButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
-
+        <item name="textAllCaps">false</item>
     </style>
 
     <style name="editText" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
@@ -36,7 +36,7 @@
     <style name="textBanner" parent="@style/Widget.AppCompat.TextView">
         <item name="android:textColor">@color/black87</item>
         <item name="fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="appNameBanner" parent="@style/Widget.AppCompat.TextView">

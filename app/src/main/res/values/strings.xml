@@ -40,4 +40,6 @@
     <string name="found">Znalezione</string>
     <string name="main_page_nav">Strona Główna</string>
     <string name="edit_profile_data">Edytuj dane profilu</string>
+    <string name="save">Zapisz</string>
+    <string name="my_posts">Moje ogłoszenia</string>
 </resources>

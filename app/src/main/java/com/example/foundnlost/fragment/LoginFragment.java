@@ -48,9 +48,7 @@ public class LoginFragment extends Fragment {
             }
         });
         binder.appHeader.setBackClickedListener(v -> requireActivity().onBackPressed());
-        assert binder.loginEmailTextInputLayout.getEditText() != null;
-        assert binder.loginPasswordTextInputLayout.getEditText() != null;
-        binder.loginEmailTextInputLayout.getEditText().addTextChangedListener(new TextWatcher() {
+        binder.loginEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -66,7 +64,7 @@ public class LoginFragment extends Fragment {
 
             }
         });
-        binder.loginPasswordTextInputLayout.getEditText().addTextChangedListener(new TextWatcher() {
+        binder.loginPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -82,6 +80,7 @@ public class LoginFragment extends Fragment {
 
             }
         });
+
         binder.forgotPasswordTextButton.setOnClickListener(v-> ((StartActivity) requireActivity()).showDialog(new ForgotPasswordDialogFragment()));
 
         return binder.getRoot();
