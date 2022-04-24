@@ -1,4 +1,4 @@
-package com.example.foundnlost.activity;
+package com.example.foundnlost.ui.activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.ActivityMainBinding;
-import com.example.foundnlost.fragment.MainFragment;
-import com.example.foundnlost.fragment.ProfileFragment;
+import com.example.foundnlost.ui.fragment.FoundFragment;
+import com.example.foundnlost.ui.fragment.LostFragment;
+import com.example.foundnlost.ui.fragment.MainFragment;
+import com.example.foundnlost.ui.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -63,8 +65,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableIndicatorForItem(int position) {
-        for (View v : indicatorViews) {
-            v.setVisibility(View.GONE);
+
+        for (View view : indicatorViews) {
+            view.setVisibility(View.GONE);
         }
         indicatorViews.get(position).setVisibility(View.VISIBLE);
     }
@@ -82,29 +85,34 @@ public class MainActivity extends AppCompatActivity {
     private final NavigationBarView.OnItemSelectedListener navigationListener = item -> {
         enableIndicatorForItem(item.getOrder());
         switch (item.getItemId()) {
-            case R.id.nav_home: {
+            case R.id.nav_home:
                 if (currentFragmentId != HOME_ID) {
                     displayFragment(new MainFragment());
                     currentFragmentId = HOME_ID;
                 }
-            }
-            case R.id.nav_found: {
+                return true;
+
+            case R.id.nav_found:
                 if (currentFragmentId != FOUND_ID) {
-                    Toast.makeText(getApplicationContext(), "FOUND", Toast.LENGTH_LONG);
+                    displayFragment(new FoundFragment());
+                    currentFragmentId = FOUND_ID;
                 }
-            }
-            case R.id.nav_lost: {
+                return true;
+
+            case R.id.nav_lost:
                 if (currentFragmentId != LOST_ID) {
-                    Toast.makeText(getApplicationContext(), "LOST", Toast.LENGTH_LONG);
+                    displayFragment(new LostFragment());
+                    currentFragmentId = LOST_ID;
                 }
-            }
-            case R.id.nav_profile: {
+                return true;
+
+
+            case R.id.nav_profile:
                 if (currentFragmentId != PROFILE_ID) {
                     displayFragment(new ProfileFragment());
                     currentFragmentId = PROFILE_ID;
                 }
-            }
-            return true;
+                return true;
         }
         return false;
     };

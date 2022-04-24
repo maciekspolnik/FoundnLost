@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,9 +13,8 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.foundnlost.activity.StartActivity;
+import com.example.foundnlost.ui.activity.StartActivity;
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentRegisterBinding;
 import com.example.foundnlost.viewModel.RegisterViewModel;
@@ -24,17 +23,17 @@ import com.google.android.material.textfield.TextInputLayout;
 public class RegisterFragment extends Fragment {
 
     private RegisterViewModel viewModel;
-    private FragmentRegisterBinding binder;
+    private FragmentRegisterBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binder = FragmentRegisterBinding.inflate(inflater, container, false);
+        binding = FragmentRegisterBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
 
-        binder.registerNextButton.setOnClickListener(v -> ((StartActivity) requireActivity()).displayFragment(new RegisterDetailsFragment()));
+        binding.registerNextButton.setOnClickListener(v -> ((StartActivity) requireActivity()).displayFragment(new RegisterDetailsFragment()));
 
-        binder.registerEmailEditText.addTextChangedListener(new TextWatcher() {
+        binding.registerEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -42,7 +41,7 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLength(binder.registerEmailInputLayout);
+                validateLength(binding.registerEmailInputLayout);
             }
 
             @Override
@@ -51,7 +50,7 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-        binder.registerPasswordEditText.addTextChangedListener(new TextWatcher() {
+        binding.registerPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -59,7 +58,7 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLength(binder.registerPasswordInputLayout);
+                validateLength(binding.registerPasswordInputLayout);
             }
 
             @Override
@@ -68,7 +67,7 @@ public class RegisterFragment extends Fragment {
             }
         });
 
-        binder.registerPasswordConfirmEditText.addTextChangedListener(new TextWatcher() {
+        binding.registerPasswordConfirmEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -76,7 +75,7 @@ public class RegisterFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLength(binder.registerPasswordConfirmInputLayout);
+                validateLength(binding.registerPasswordConfirmInputLayout);
             }
 
             @Override
@@ -87,7 +86,7 @@ public class RegisterFragment extends Fragment {
 
 
 
-        return binder.getRoot();
+        return binding.getRoot();
     }
 
     private String extractText(TextInputLayout textInputLayout) {

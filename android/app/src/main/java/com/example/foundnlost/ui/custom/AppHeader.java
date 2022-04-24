@@ -1,4 +1,4 @@
-package com.example.foundnlost.custom;
+package com.example.foundnlost.ui.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;

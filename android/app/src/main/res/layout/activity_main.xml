@@ -4,22 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    tools:context=".ui.activity.MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appHeader2" />
-
-    <com.example.foundnlost.custom.AppHeader
-        android:id="@+id/appHeader2"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/top_bar_height"
-        app:layout_constraintBottom_toTopOf="@+id/main_fragment_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

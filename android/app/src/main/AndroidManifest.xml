@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/icon_app_round"
         android:theme="@style/Theme.FoundnLost">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".activity.StartActivity"
+            android:name=".ui.activity.StartActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

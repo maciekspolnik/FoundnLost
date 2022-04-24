@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;

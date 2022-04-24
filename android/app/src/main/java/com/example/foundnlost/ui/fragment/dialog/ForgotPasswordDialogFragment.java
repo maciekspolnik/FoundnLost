@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment.dialog;
+package com.example.foundnlost.ui.fragment.dialog;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,14 @@ import com.example.foundnlost.databinding.DialogForgotPasswordBinding;
 
 public class ForgotPasswordDialogFragment extends DialogFragment {
 
-    DialogForgotPasswordBinding binder;
+    DialogForgotPasswordBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binder = DialogForgotPasswordBinding.inflate(inflater, container, false);
+        binding = DialogForgotPasswordBinding.inflate(inflater, container, false);
 
         setCancelable(true);
-        return binder.getRoot();
+        return binding.getRoot();
     }
 }

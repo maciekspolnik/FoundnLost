@@ -2,16 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/paddedConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.RegisterDetailsFragment">
+    tools:context=".ui.fragment.RegisterDetailsFragment">
 
     <TextView
         android:id="@+id/registerDetailsTextBanner"
         style="@style/textBanner"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/additional_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +24,7 @@
         style="@style/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/name"
@@ -30,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerDetailsTextBanner">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerDetailsNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords" />
@@ -41,6 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
         android:hint="@string/surname"
         android:textColorHint="@color/black87"
@@ -50,6 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/registerDetailsTextBanner">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerDetailsSurameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -59,13 +65,16 @@
         style="@style/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:hint="@string/phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerDetailsNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/registerDetailsPhoneEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone" />
@@ -76,7 +85,9 @@
         style="@style/editText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         android:clickable="true"
         android:focusable="true"
         android:hint="@string/date_of_birth"
@@ -95,6 +106,7 @@
         android:id="@+id/registrationAgreementCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
         android:text="@string/terms_agreement"
         android:textSize="16sp"
@@ -107,6 +119,9 @@
         android:id="@+id/registrationButton"
         style="@style/primaryButton"
         android:layout_width="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

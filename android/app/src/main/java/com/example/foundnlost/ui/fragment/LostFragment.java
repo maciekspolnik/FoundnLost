@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,26 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.viewModel.FoundViewModel;
+import com.example.foundnlost.viewModel.LostViewModel;
 
-public class FoundFragment extends Fragment {
+public class LostFragment extends Fragment {
 
-    private FoundViewModel mViewModel;
+    private LostViewModel mViewModel;
 
-    public static FoundFragment newInstance() {
-        return new FoundFragment();
+    public static LostFragment newInstance() {
+        return new LostFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_found, container, false);
+        return inflater.inflate(R.layout.fragment_lost, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FoundViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(LostViewModel.class);
         // TODO: Use the ViewModel
     }
 

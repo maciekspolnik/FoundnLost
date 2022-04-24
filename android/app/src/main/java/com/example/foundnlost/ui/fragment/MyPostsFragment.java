@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -18,14 +18,14 @@ import com.example.foundnlost.viewModel.MyPostsViewModel;
 public class MyPostsFragment extends Fragment {
 
     private MyPostsViewModel viewModel;
-    private FragmentMyPostsBinding binder;
+    private FragmentMyPostsBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binder = FragmentMyPostsBinding.inflate(inflater,container,false);
+        binding = FragmentMyPostsBinding.inflate(inflater,container,false);
         viewModel = new ViewModelProvider(this).get(MyPostsViewModel.class);
-        return binder.getRoot();
+        return binding.getRoot();
     }
 
 }

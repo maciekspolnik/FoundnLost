@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    tools:context=".fragment.LoginFragment">
+    tools:context=".ui.fragment.LoginFragment">
 
-    <com.example.foundnlost.custom.AppHeader
+    <com.example.foundnlost.ui.custom.AppHeader
         android:id="@+id/appHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

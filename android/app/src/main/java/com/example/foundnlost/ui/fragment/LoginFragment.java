@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,41 +14,40 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.activity.MainActivity;
-import com.example.foundnlost.activity.StartActivity;
+import com.example.foundnlost.ui.activity.MainActivity;
+import com.example.foundnlost.ui.activity.StartActivity;
 import com.example.foundnlost.databinding.FragmentLoginBinding;
-import com.example.foundnlost.fragment.dialog.ForgotPasswordDialogFragment;
+import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialogFragment;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginFragment extends Fragment {
 
     private LoginViewModel viewModel;
-    private FragmentLoginBinding binder;
+    private FragmentLoginBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binder = FragmentLoginBinding.inflate(inflater, container, false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-        binder.loginButton.setOnClickListener(v -> {
-            if (validateLength(binder.loginEmailTextInputLayout)
-                    && validateLength(binder.loginPasswordTextInputLayout)
-                    && ValidationUtil.isEmailValid(extractText(binder.loginEmailTextInputLayout))
-                    && ValidationUtil.isPasswordValid(extractText(binder.loginPasswordTextInputLayout))
+        binding.loginButton.setOnClickListener(v -> {
+            if (validateLength(binding.loginEmailTextInputLayout)
+                    && validateLength(binding.loginPasswordTextInputLayout)
+                    && ValidationUtil.isEmailValid(extractText(binding.loginEmailTextInputLayout))
+                    && ValidationUtil.isPasswordValid(extractText(binding.loginPasswordTextInputLayout))
             ) {
                 //TODO LOGIKA PODLACZENIA DO LOGOWANIA NA BACKENDZIE
                 Intent intent = new Intent(requireActivity(), MainActivity.class);
                 startActivity(intent);
             } else {
-                binder.loginEmailTextInputLayout.setError("  ");
-                binder.loginPasswordTextInputLayout.setError(getString(R.string.wrong_login_credentials));
+                binding.loginEmailTextInputLayout.setError(" ");
+                binding.loginPasswordTextInputLayout.setError(getString(R.string.wrong_login_credentials));
             }
         });
-        binder.appHeader.setBackClickedListener(v -> requireActivity().onBackPressed());
-        binder.loginEmailEditText.addTextChangedListener(new TextWatcher() {
+        binding.appHeader.setBackClickedListener(v -> requireActivity().onBackPressed());
+        binding.loginEmailEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -56,7 +55,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLength(binder.loginEmailTextInputLayout);
+                validateLength(binding.loginEmailTextInputLayout);
             }
 
             @Override
@@ -64,7 +63,7 @@ public class LoginFragment extends Fragment {
 
             }
         });
-        binder.loginPasswordEditText.addTextChangedListener(new TextWatcher() {
+        binding.loginPasswordEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -72,7 +71,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                validateLength(binder.loginPasswordTextInputLayout);
+                validateLength(binding.loginPasswordTextInputLayout);
             }
 
             @Override
@@ -81,9 +80,9 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        binder.forgotPasswordTextButton.setOnClickListener(v-> ((StartActivity) requireActivity()).showDialog(new ForgotPasswordDialogFragment()));
+        binding.forgotPasswordTextButton.setOnClickListener(v-> ((StartActivity) requireActivity()).showDialog(new ForgotPasswordDialogFragment()));
 
-        return binder.getRoot();
+        return binding.getRoot();
     }
 
     private String extractText(TextInputLayout textInputLayout) {

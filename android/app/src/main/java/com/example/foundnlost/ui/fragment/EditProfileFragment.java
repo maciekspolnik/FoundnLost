@@ -1,4 +1,4 @@
-package com.example.foundnlost.fragment;
+package com.example.foundnlost.ui.fragment;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -12,21 +12,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentEditProfileBinding;
 import com.example.foundnlost.viewModel.EditProfileViewModel;
 
 public class EditProfileFragment extends Fragment {
 
     private EditProfileViewModel viewModel;
-    private FragmentEditProfileBinding binder;
+    private FragmentEditProfileBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binder = FragmentEditProfileBinding.inflate(inflater, container, false);
+        binding = FragmentEditProfileBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(EditProfileViewModel.class);
-        return binder.getRoot();
+        return binding.getRoot();
     }
 
 }

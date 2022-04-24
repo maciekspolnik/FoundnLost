@@ -42,4 +42,9 @@
     <string name="edit_profile_data">Edytuj dane profilu</string>
     <string name="save">Zapisz</string>
     <string name="my_posts">Moje ogłoszenia</string>
+    <string name="example_credentials">Kamil Snail</string>
+    <string name="log_out">Wyloguj się</string>
+    <string name="confirm">Zatwierdź</string>
+    <string name="cancel">Anuluj</string>
+    <string name="pick_date">Zaznacz datę urodzenia</string>
 </resources>

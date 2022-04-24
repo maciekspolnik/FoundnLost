@@ -1,4 +1,4 @@
-package com.example.foundnlost.activity;
+package com.example.foundnlost.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -7,11 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.foundnlost.databinding.ActivityMainBinding;
 import com.example.foundnlost.databinding.ActivityStartBinding;
-import com.example.foundnlost.fragment.MainFragment;
 import com.example.foundnlost.R;
-import com.example.foundnlost.fragment.StartFragment;
+import com.example.foundnlost.ui.fragment.StartFragment;
 
 public class StartActivity extends AppCompatActivity {
 
