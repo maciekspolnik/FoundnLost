@@ -2,5 +2,5 @@
 <resources>
     <dimen name="text_input_layout_height">60dp</dimen>
     <dimen name="next_button_height">60dp</dimen>
-    <dimen name="top_bar_height">60dp</dimen>
+    <dimen name="top_bar_height">55dp</dimen>
 </resources>

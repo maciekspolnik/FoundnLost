@@ -1,13 +1,9 @@
 package com.example.foundnlost.ui.fragment;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,7 +17,6 @@ import android.widget.Button;
 
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentAdvertsBinding;
-import com.example.foundnlost.util.Const;
 import com.example.foundnlost.viewModel.FoundViewModel;
 
 public class FoundFragment extends Fragment {
@@ -58,6 +53,6 @@ public class FoundFragment extends Fragment {
 
     private void adjustButton(Button button, boolean clicked) {
         button.setClickable(!clicked);
-        button.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), clicked ? R.color.accentPink : R.color.white)));
+        button.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), clicked ? R.color.french_rose : R.color.white)));
     }
 }

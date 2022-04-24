@@ -76,7 +76,7 @@
         android:src="@drawable/ic_action_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardTitle"
-        app:tint="@color/accentPink" />
+        app:tint="@color/french_rose" />
 
     <ImageView
         android:id="@+id/cardTimeIcon"

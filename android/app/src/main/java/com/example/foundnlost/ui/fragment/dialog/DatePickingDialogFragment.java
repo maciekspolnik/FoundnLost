@@ -4,19 +4,10 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.DatePicker;
-
-import com.example.foundnlost.R;
-import com.example.foundnlost.databinding.DialogDatePickingBinding;
-import com.example.foundnlost.util.interfaces.onDismissListener;
 
 import java.util.Calendar;
 import java.util.Locale;
