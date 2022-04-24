@@ -1,4 +1,4 @@
-package com.example.foundnlost.ui.fragment;
+package com.example.foundnlost.ui.fragment.authorisation;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class RegisterDetailsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(RegisterViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(RegisterViewModel.class);
         binding = FragmentRegisterDetailsBinding.inflate(inflater, container, false);
 
         binding.datePickerButton.setOnClickListener(view -> showDatePickingDialog());
@@ -37,6 +37,6 @@ public class RegisterDetailsFragment extends Fragment {
         dialog.setOnDismissListener(dialogInterface -> {
             binding.registerDetailsDateEditText.setText(dialog.getDate());
         });
-        dialog.show(requireActivity().getSupportFragmentManager(),"DatePickingDialog");
+        dialog.show(requireActivity().getSupportFragmentManager(), "DatePickingDialog");
     }
 }

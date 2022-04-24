@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.ui.activity.StartActivity;
 import com.example.foundnlost.databinding.FragmentStartBinding;
+import com.example.foundnlost.ui.fragment.authorisation.LoginFragment;
+import com.example.foundnlost.ui.fragment.authorisation.RegisterFragment;
 
 public class StartFragment extends Fragment {
 
@@ -20,8 +22,8 @@ public class StartFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentStartBinding.inflate(inflater, container, false);
 
-        binding.startLoginButton.setOnClickListener(v -> ((StartActivity) requireActivity()).displayFragment(new LoginFragment()));
-        binding.startRegisterButton.setOnClickListener(v -> ((StartActivity) requireActivity()).displayFragment(new RegisterFragment()));
+        binding.startLoginButton.setOnClickListener(view -> ((StartActivity) requireActivity()).displayFragment(new LoginFragment()));
+        binding.startRegisterButton.setOnClickListener(view -> ((StartActivity) requireActivity()).displayFragment(new RegisterFragment()));
 
         return binding.getRoot();
     }

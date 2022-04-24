@@ -47,4 +47,7 @@
     <string name="confirm">Zatwierdź</string>
     <string name="cancel">Anuluj</string>
     <string name="pick_date">Zaznacz datę urodzenia</string>
+    <string name="current_adverts">Aktualne Ogłoszenia</string>
+    <string name="edit_profile">Edytuj Profil</string>
+    <string name="about_app">O aplikacji</string>
 </resources>
