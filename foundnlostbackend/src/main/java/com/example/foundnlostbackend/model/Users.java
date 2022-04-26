@@ -9,13 +9,14 @@ import java.time.LocalDate;
 @Entity
 public class Users {
 
-    public Users(){
+    public Users() {
 
     }
 
-    public Users(String name, String surname, String email, String phone, LocalDate dateOfBirth) {
+    public Users(String name, String surname, String email, String password, String phone, LocalDate dateOfBirth) {
         this.name = name;
         this.surname = surname;
+        this.password = password;
         this.email = email;
         this.phone = phone;
         this.dateOfBirth = dateOfBirth;
@@ -31,9 +32,19 @@ public class Users {
 
     private String email;
 
+    private String password;
+
     private String phone;
 
     private LocalDate dateOfBirth;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Long getUsersId() {
         return usersId;
@@ -82,4 +93,5 @@ public class Users {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
 }

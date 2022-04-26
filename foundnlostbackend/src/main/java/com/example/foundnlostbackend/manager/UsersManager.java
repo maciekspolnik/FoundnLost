@@ -3,14 +3,18 @@ package com.example.foundnlostbackend.manager;
 import com.example.foundnlostbackend.model.Users;
 import com.example.foundnlostbackend.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
-@Service
+@Service(value = "usersManager")
 public class UsersManager {
 
-    private UsersRepository usersRepository;
+    @Autowired
+    private final UsersRepository usersRepository;
 
     @Autowired
     public UsersManager(UsersRepository usersRepository) {
@@ -30,13 +34,17 @@ public class UsersManager {
     }
 
     public void deleteUser(Long id) {
-         usersRepository.deleteById(id);
+        usersRepository.deleteById(id);
     }
 
-//    @EventListener(ApplicationReadyEvent.class)
-//    public void fillDB(){
-//        addUser(new Users("j","ho","esfdsf","5555", LocalDate.of(1999,1,1)));
-//        addUser(new Users("z","zzzho","esfdsf@@","55ddd55", LocalDate.of(2079,12,11)));
-//    }
+    public Users findByUsernameAndPassword(String email, String password) {
+        return usersRepository.findUsersByEmailAndPassword(email, password);
+    }
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void fillDB() {
+        addUser(new Users("j", "ho", "esfdsf", "m1111111", "5555", LocalDate.of(1999, 1, 1)));
+        addUser(new Users("z", "zzzho", "esfdsf@@", "m2394", "55ddd55", LocalDate.of(2079, 12, 11)));
+    }
 
 }

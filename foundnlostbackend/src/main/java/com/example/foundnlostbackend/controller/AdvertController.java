@@ -1,4 +1,4 @@
-package com.example.foundnlostbackend.controler;
+package com.example.foundnlostbackend.controller;
 
 import com.example.foundnlostbackend.manager.AdvertManager;
 import com.example.foundnlostbackend.model.Advert;

@@ -1,4 +1,4 @@
-package com.example.foundnlostbackend.controler;
+package com.example.foundnlostbackend.controller;
 
 import com.example.foundnlostbackend.manager.UsersManager;
 import com.example.foundnlostbackend.model.Users;
