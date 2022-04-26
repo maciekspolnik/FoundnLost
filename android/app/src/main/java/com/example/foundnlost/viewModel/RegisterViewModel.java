@@ -13,7 +13,9 @@ import okhttp3.Response;
 
 public class RegisterViewModel extends DisposableViewModel {
 
-    private DatabaseHelper databaseHelper;
+
+    private final DatabaseHelper databaseHelper;
+
     private String email;
     private String password;
     private String name;
@@ -59,13 +61,10 @@ public class RegisterViewModel extends DisposableViewModel {
     }
 
 
-
     public void saveUserToDatabase() {
         addDisposable(databaseHelper.insertUser(getUserEntity())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe());
     }
-
-
 }

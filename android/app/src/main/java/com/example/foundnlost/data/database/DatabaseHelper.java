@@ -15,6 +15,6 @@ public interface DatabaseHelper {
 
     Maybe<UserEntity> findById(Integer id);
 
-    Maybe<UserEntity> findByName(String name, String surname);
+    Maybe<UserEntity> validate(String email, String password);
 
 }

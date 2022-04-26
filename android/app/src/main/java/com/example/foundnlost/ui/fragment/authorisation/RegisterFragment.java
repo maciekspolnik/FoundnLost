@@ -29,7 +29,7 @@ public class RegisterFragment extends Fragment {
 
         viewModel = new ViewModelProvider(requireActivity(), new ViewModelFactory(requireContext())).get(RegisterViewModel.class);
 
-        binding.appHeader3.setBackClickedListener(view -> requireActivity().onBackPressed());
+        binding.registerAppHeader.setBackClickedListener(view -> requireActivity().onBackPressed());
         binding.registerNextButton.setOnClickListener(view -> {
             viewModel.setLoginDetails(
                     extractText(binding.registerEmailInputLayout),

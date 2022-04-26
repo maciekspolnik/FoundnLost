@@ -22,7 +22,7 @@ public class DatabaseHelperImpl implements DatabaseHelper {
     }
 
     @Override
-    public Maybe<UserEntity> findByName(String name, String surname) {
+    public Maybe<UserEntity> validate(String name, String surname) {
         return userDao.findByName(name, surname);
     }
 
