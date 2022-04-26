@@ -37,8 +37,16 @@ public class UsersManager {
         usersRepository.deleteById(id);
     }
 
-    public Users findByUsernameAndPassword(String email, String password) {
+    public Users findByEmailAndPassword(String email, String password) {
         return usersRepository.findUsersByEmailAndPassword(email, password);
+    }
+
+    public Boolean isEmailAvailable(String email) {
+        return usersRepository.existsByEmail(email);
+    }
+
+    public Users findByEmail(String email) {
+        return usersRepository.findUsersByEmail(email);
     }
 
     @EventListener(ApplicationReadyEvent.class)

@@ -5,7 +5,6 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -32,15 +31,14 @@ public class JwtTokenUtil implements Serializable {
         return claimsResolver.apply(claims);
     }
 
-    private Claims getAllClaimsFromToken(String token) {
+    public Claims getAllClaimsFromToken(String token) {
         return Jwts.parser()
                 .setSigningKey(SIGNING_KEY)
                 .parseClaimsJws(token)
                 .getBody();
     }
 
-    private Boolean isTokenExpired(String token) {
-        final Date expiration = getExpirationDateFromToken(token);
+    private Boolean isTokenExpired(Date expiration) {
         return expiration.before(new Date());
     }
 
@@ -50,23 +48,20 @@ public class JwtTokenUtil implements Serializable {
 
     private String doGenerateToken(String subject) {
 
-        Claims claims = Jwts.claims().setSubject(subject);
+        Claims claims = Jwts.claims().setSubject("verification_token");
         claims.put("scopes", List.of(new SimpleGrantedAuthority("ROLE_USER")));
-
+        claims.put("email", subject);
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuer("marczan")
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS*1000))
+                .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS * 1000))
                 .signWith(SignatureAlgorithm.HS256, SIGNING_KEY)
                 .compact();
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails) {
-        final String username = getUsernameFromToken(token);
-        return (
-                username.equals(userDetails.getUsername())
-                        && !isTokenExpired(token));
+    public Boolean validateToken(Claims claims, String email) {
+        return (email.equals(claims.get("email").toString()) && !isTokenExpired(claims.getExpiration()));
     }
 
 }
