@@ -1,36 +1,51 @@
 package com.example.foundnlostbackend.controller;
 
+import com.example.foundnlostbackend.Const;
+import com.example.foundnlostbackend.data.AddAdvert;
+import com.example.foundnlostbackend.data.Response;
 import com.example.foundnlostbackend.manager.AdvertManager;
+import com.example.foundnlostbackend.manager.UsersManager;
+import com.example.foundnlostbackend.mapper.AdvertMapper;
 import com.example.foundnlostbackend.model.Advert;
+import com.example.foundnlostbackend.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/advert/")
 public class AdvertController {
 
-    private AdvertManager advertManager;
+    @Autowired
+    private final AdvertManager advertManager;
 
     @Autowired
-    public AdvertController(AdvertManager advertManager) {
-        this.advertManager = advertManager;
-    }
+    private final UsersManager usersManager;
 
-    @GetMapping("/all")
-    public Iterable<Advert> getAdverts() {
-        return advertManager.findAll();
+    @Autowired
+    public AdvertController(AdvertManager advertManager, UsersManager usersManager) {
+        this.advertManager = advertManager;
+        this.usersManager = usersManager;
     }
 
     @GetMapping
-    public Optional<Advert> getAdvertByType(@RequestParam String type) {
-        return advertManager.findByType(type);
+    public Response<Advert> getAdvertByType(@RequestParam String type) {
+        Advert advert = advertManager.findByType(type);
+        if (advert == null) {
+            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+        }
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, advert);
     }
 
     @PostMapping
-    public Advert addAdvert(@RequestBody Advert advert) {
-        return advertManager.add(advert);
+    public Response<Void> addAdvert(@RequestBody AddAdvert addAdvert) {
+        Users user = usersManager.findById(addAdvert.getUserId());
+        if (user == null) {
+            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+
+        }
+        advertManager.add(AdvertMapper.mapToAdvert(addAdvert, user));
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, null);
     }
 
     @PutMapping

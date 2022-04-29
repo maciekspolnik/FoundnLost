@@ -1,12 +1,15 @@
 package com.example.foundnlostbackend.repository;
 
 import com.example.foundnlostbackend.model.Advert;
+import com.example.foundnlostbackend.model.Users;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.Optional;
 
 public interface AdvertRepository extends CrudRepository<Advert, Long> {
 
-    public Optional<Advert> findByPostType(String postType);
+    Advert findByPostType(String postType);
+
+    Advert findByAdvertId(Long advertId);
+
+    Iterable<Advert> findByUser(Users user);
 
 }

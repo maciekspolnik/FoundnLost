@@ -1,4 +1,4 @@
-package com.example.foundnlostbackend.model;
+package com.example.foundnlostbackend.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

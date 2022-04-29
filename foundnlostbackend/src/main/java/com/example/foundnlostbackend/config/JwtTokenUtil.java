@@ -12,8 +12,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
 
-import static com.example.foundnlostbackend.Consts.ACCESS_TOKEN_VALIDITY_SECONDS;
-import static com.example.foundnlostbackend.Consts.SIGNING_KEY;
+import static com.example.foundnlostbackend.Const.ACCESS_TOKEN_VALIDITY_SECONDS;
+import static com.example.foundnlostbackend.Const.SIGNING_KEY;
 
 @Component
 public class JwtTokenUtil implements Serializable {
