@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.ActivityMainBinding;
 import com.example.foundnlost.ui.fragment.FoundFragment;
-import com.example.foundnlost.ui.fragment.LostFragment;
 import com.example.foundnlost.ui.fragment.MainFragment;
 import com.example.foundnlost.ui.fragment.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -30,9 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private int currentFragmentId;
 
     private int HOME_ID = 0;
-    private int FOUND_ID = 1;
-    private int LOST_ID = 2;
-    private int PROFILE_ID = 3;
+    private int MANAGE_ID = 1;
+    private int PROFILE_ID = 2;
 
 
     @Override
@@ -41,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
         binding.navigation.setOnItemSelectedListener(navigationListener);
-        displayFragment(new MainFragment());
+        displayFragment(new FoundFragment());
         currentFragmentId = HOME_ID;
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) binding.navigation.getChildAt(0);
         binding.navigation.getMenu().getItem(currentFragmentId).setChecked(true);
@@ -87,25 +85,17 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nav_home:
                 if (currentFragmentId != HOME_ID) {
-                    displayFragment(new MainFragment());
+                    displayFragment(new FoundFragment());
                     currentFragmentId = HOME_ID;
                 }
                 return true;
 
-            case R.id.nav_found:
-                if (currentFragmentId != FOUND_ID) {
+            case R.id.nav_manage:
+                if (currentFragmentId != MANAGE_ID) {
                     displayFragment(new FoundFragment());
-                    currentFragmentId = FOUND_ID;
+                    currentFragmentId = MANAGE_ID;
                 }
                 return true;
-
-            case R.id.nav_lost:
-                if (currentFragmentId != LOST_ID) {
-                    displayFragment(new LostFragment());
-                    currentFragmentId = LOST_ID;
-                }
-                return true;
-
 
             case R.id.nav_profile:
                 if (currentFragmentId != PROFILE_ID) {

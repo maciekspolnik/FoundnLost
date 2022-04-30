@@ -17,7 +17,7 @@
         android:text="@string/additional_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appHeader2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registerDetailsNameInputLayout"
@@ -28,7 +28,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:hint="@string/name"
-        app:layout_constraintEnd_toStartOf="@+id/registerDetailsSurameInputLayout"
+        app:layout_constraintEnd_toStartOf="@+id/registerDetailsSurnameInputLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registerDetailsTextBanner">
 
@@ -40,7 +40,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerDetailsSurameInputLayout"
+        android:id="@+id/registerDetailsSurnameInputLayout"
         style="@style/editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -104,10 +104,12 @@
 
     <CheckBox
         android:id="@+id/registrationAgreementCheckBox"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
+        android:buttonTint="@drawable/checkbox_color"
         android:text="@string/terms_agreement"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/registrationButton"
@@ -149,5 +151,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/registrationButton" />
+
+    <com.example.foundnlost.ui.custom.AppHeader
+        android:id="@+id/appHeader2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/top_bar_height"
+        app:closeButtonVisible="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

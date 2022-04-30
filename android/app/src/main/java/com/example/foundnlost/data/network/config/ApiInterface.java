@@ -1,9 +1,9 @@
-package com.example.foundnlost.network.config;
+package com.example.foundnlost.data.network.config;
 
-import com.example.foundnlost.network.dto.ContactDataDto;
-import com.example.foundnlost.network.dto.UserDto;
-import com.example.foundnlost.network.model.Users;
-import com.example.foundnlost.network.model.UsersDetails;
+import com.example.foundnlost.data.network.dto.ContactDataDto;
+import com.example.foundnlost.data.network.dto.UserDto;
+import com.example.foundnlost.data.network.model.Users;
+import com.example.foundnlost.data.network.model.UsersDetails;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;

@@ -1,4 +1,4 @@
-package com.example.foundnlost.network.config;
+package com.example.foundnlost.data.network.config;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

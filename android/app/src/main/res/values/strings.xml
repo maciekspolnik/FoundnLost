@@ -38,6 +38,7 @@
     <string name="profile">Profil</string>
     <string name="lost">Zagubione</string>
     <string name="found">Znalezione</string>
+    <string name="manage_adverts">Moje Ogłoszenia</string>
     <string name="main_page_nav">Strona Główna</string>
     <string name="edit_profile_data">Edytuj dane profilu</string>
     <string name="save">Zapisz</string>
@@ -50,4 +51,6 @@
     <string name="current_adverts">Aktualne Ogłoszenia</string>
     <string name="edit_profile">Edytuj Profil</string>
     <string name="about_app">O aplikacji</string>
+    <string name="your_adverts">Twoje ogłoszenia</string>
+    <string name="add_advert">dodaj nowe ogłoszenie</string>
 </resources>

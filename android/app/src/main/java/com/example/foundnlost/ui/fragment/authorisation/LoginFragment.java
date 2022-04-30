@@ -2,8 +2,6 @@ package com.example.foundnlost.ui.fragment.authorisation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
+import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.activity.StartActivity;
-import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialogFragment;
 import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
+import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginFragment extends Fragment {
@@ -32,7 +31,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(LoginViewModel.class);
         binding.loginButton.setOnClickListener(view -> onLoginClicked());
 
         binding.appHeader.setBackClickedListener(view -> requireActivity().onBackPressed());
