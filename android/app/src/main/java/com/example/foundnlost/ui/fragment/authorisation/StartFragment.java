@@ -1,4 +1,4 @@
-package com.example.foundnlost.ui.fragment;
+package com.example.foundnlost.ui.fragment.authorisation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

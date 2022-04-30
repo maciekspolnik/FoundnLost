@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.example.foundnlost.databinding.ActivityStartBinding;
 import com.example.foundnlost.R;
-import com.example.foundnlost.ui.fragment.StartFragment;
+import com.example.foundnlost.ui.fragment.authorisation.StartFragment;
 
 public class StartActivity extends AppCompatActivity {
 

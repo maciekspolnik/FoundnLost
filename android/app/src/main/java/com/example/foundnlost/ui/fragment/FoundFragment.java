@@ -29,8 +29,8 @@ public class FoundFragment extends Fragment {
     private enum Indicator {LOST_INDICATOR, FOUND_INDICATOR}
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         binding = FragmentAdvertsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this).get(FoundViewModel.class);
 
@@ -53,6 +53,7 @@ public class FoundFragment extends Fragment {
 
     private void adjustButton(Button button, boolean clicked) {
         button.setClickable(!clicked);
+        button.setElevation(clicked ? 4f : 0f);
         button.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), clicked ? R.color.french_rose : R.color.white)));
     }
 }

@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.FoundnLost" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#3E50B4</item>
+        <item name="colorPrimary">@color/sapphire</item>
         <item name="colorPrimaryVariant">@color/black87</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:colorAccent">#FF3F80</item>

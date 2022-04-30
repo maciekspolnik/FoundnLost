@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
 import com.example.foundnlost.data.database.DatabaseHelperImpl;
+import com.example.foundnlost.viewModel.LoginViewModel;
 import com.example.foundnlost.viewModel.RegisterViewModel;
 
 import java.util.Objects;
@@ -27,6 +28,10 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
 
         if (modelClass.isAssignableFrom(RegisterViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new RegisterViewModel(databaseHelper)));
+        }
+
+        if (modelClass.isAssignableFrom(LoginViewModel.class)) {
+            return Objects.requireNonNull(modelClass.cast(new LoginViewModel(databaseHelper)));
         }
 
         throw new IllegalArgumentException("Wrong viewModel class");
