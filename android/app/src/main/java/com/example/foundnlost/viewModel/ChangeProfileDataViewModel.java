@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
 
-public class ProfileViewModel extends ViewModel {
-    private final DatabaseHelper databaseHelper;
+public class ChangeProfileDataViewModel extends ViewModel {
+    private DatabaseHelper databaseHelper;
 
-    public ProfileViewModel(DatabaseHelper databaseHelper) {
+    public ChangeProfileDataViewModel(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
 }

@@ -10,15 +10,14 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.foundnlost.databinding.DialogForgotPasswordBinding;
 
-public class ForgotPasswordDialogFragment extends DialogFragment {
+public class ForgotPasswordDialog extends DialogFragment {
 
     DialogForgotPasswordBinding binding;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DialogForgotPasswordBinding.inflate(inflater, container, false);
-
+        binding.imageButton.setOnClickListener(view -> dismiss());
         setCancelable(true);
         return binding.getRoot();
     }

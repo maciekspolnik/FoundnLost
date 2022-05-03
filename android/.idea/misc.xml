@@ -48,6 +48,7 @@
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/menu/navigation.xml" value="0.22" />
         <entry key="..\:/Users/macie/AndroidStudioProjects/FoundnLost/app/src/main/res/mipmap-anydpi-v26/icon_app.xml" value="0.1" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.20729166666666668" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/background.xml" value="0.1" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/checkbox_color.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/circle_container.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/ic_email.xml" value="0.20729166666666668" />
@@ -59,12 +60,15 @@
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/profile_card.xml" value="0.3651041666666667" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/drawable/round_corners_bottomsheet.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/activity_main.xml" value="0.3582427536231884" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/add_advert_dialog.xml" value="0.22" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/card.xml" value="0.34375" />
-        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/dialog_change_profile_data.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/contact_info_dialog.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/dialog_change_profile_data.xml" value="0.22" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/dialog_date_picking.xml" value="0.3489583333333333" />
-        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/dialog_forgot_password.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/dialog_forgot_password.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_adverts.xml" value="0.22" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_date_picking_dialog.xml" value="0.3582427536231884" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_edit_profile.xml" value="0.1" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_found.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_login.xml" value="0.348731884057971" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_lost.xml" value="0.1" />
@@ -76,10 +80,11 @@
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_start.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/fragment_test.xml" value="0.3582427536231884" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/indicator_layout.xml" value="0.5" />
-        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/item_advert_card.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/item_advert_card.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/item_topbar.xml" value="0.33" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/layout/manage_adverts_fragment.xml" value="0.22" />
         <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/menu/navigation.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/macie/Documents/GitHub/FoundnLost/android/app/src/main/res/mipmap-anydpi-v26/icon_app.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>

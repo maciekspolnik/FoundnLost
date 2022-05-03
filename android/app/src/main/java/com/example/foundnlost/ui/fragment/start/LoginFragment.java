@@ -1,4 +1,4 @@
-package com.example.foundnlost.ui.fragment.authorisation;
+package com.example.foundnlost.ui.fragment.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,7 @@ import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.activity.StartActivity;
-import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialogFragment;
+import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialog;
 import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
@@ -35,7 +35,8 @@ public class LoginFragment extends Fragment {
         binding.loginButton.setOnClickListener(view -> onLoginClicked());
 
         binding.appHeader.setBackClickedListener(view -> requireActivity().onBackPressed());
-        binding.forgotPasswordTextButton.setOnClickListener(view -> ((StartActivity) requireActivity()).showDialog(new ForgotPasswordDialogFragment()));
+        binding.forgotPasswordTextButton.setOnClickListener(view -> new ForgotPasswordDialog().
+                show(requireActivity().getSupportFragmentManager(), ""));
 
         binding.loginEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> validateLength(binding.loginEmailTextInputLayout)));
         binding.loginPasswordEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> validateLength(binding.loginPasswordTextInputLayout)));

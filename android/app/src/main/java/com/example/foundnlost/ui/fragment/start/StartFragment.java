@@ -1,4 +1,4 @@
-package com.example.foundnlost.ui.fragment.authorisation;
+package com.example.foundnlost.ui.fragment.start;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.ui.activity.StartActivity;
 import com.example.foundnlost.databinding.FragmentStartBinding;
-import com.example.foundnlost.ui.fragment.authorisation.LoginFragment;
-import com.example.foundnlost.ui.fragment.authorisation.RegisterFragment;
+import com.example.foundnlost.ui.fragment.FlowFragment;
 
-public class StartFragment extends Fragment {
+public class StartFragment extends FlowFragment {
 
     private FragmentStartBinding binding;
 
@@ -22,8 +21,8 @@ public class StartFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentStartBinding.inflate(inflater, container, false);
 
-        binding.startLoginButton.setOnClickListener(view -> ((StartActivity) requireActivity()).displayFragment(new LoginFragment()));
-        binding.startRegisterButton.setOnClickListener(view -> ((StartActivity) requireActivity()).displayFragment(new RegisterFragment()));
+        binding.startLoginButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new LoginFragment()));
+        binding.startRegisterButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new RegisterFragment()));
 
         return binding.getRoot();
     }

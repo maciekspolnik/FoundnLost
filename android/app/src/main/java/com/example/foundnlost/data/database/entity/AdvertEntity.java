@@ -20,10 +20,8 @@ public class AdvertEntity {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "advert_id")
     public int advert_id;
-
     @ColumnInfo(name = "user_id")
     public String user_id;
-
     @ColumnInfo(name = "title")
     public String title;
     @ColumnInfo(name = "location")

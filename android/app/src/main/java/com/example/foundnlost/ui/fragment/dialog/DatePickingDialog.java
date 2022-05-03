@@ -15,7 +15,7 @@ import java.util.Locale;
 import lombok.Getter;
 import lombok.Setter;
 
-public class DatePickingDialogFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener, DialogInterface.OnDismissListener {
+public class DatePickingDialog extends DialogFragment implements DatePickerDialog.OnDateSetListener, DialogInterface.OnDismissListener {
 
     @Getter
     private String date;

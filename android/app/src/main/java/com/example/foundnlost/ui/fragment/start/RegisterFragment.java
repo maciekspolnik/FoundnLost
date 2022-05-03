@@ -1,4 +1,4 @@
-package com.example.foundnlost.ui.fragment.authorisation;
+package com.example.foundnlost.ui.fragment.start;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +13,13 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentRegisterBinding;
 import com.example.foundnlost.ui.activity.StartActivity;
+import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.viewModel.RegisterViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends FlowFragment {
 
     private RegisterViewModel viewModel;
     private FragmentRegisterBinding binding;
@@ -34,7 +35,7 @@ public class RegisterFragment extends Fragment {
             viewModel.setLoginDetails(
                     extractText(binding.registerEmailInputLayout),
                     extractText(binding.registerPasswordInputLayout));
-            ((StartActivity) requireActivity()).displayFragment(new RegisterDetailsFragment());
+            onFragmentChangeRequestListener.onFragmentChangeRequest(new RegisterDetailsFragment());
         });
 
         binding.registerEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> validateLength(binding.registerEmailInputLayout)));

@@ -3,7 +3,6 @@ package com.example.foundnlost.data.network.config;
 import com.example.foundnlost.data.network.dto.ContactDataDto;
 import com.example.foundnlost.data.network.dto.UserDto;
 import com.example.foundnlost.data.network.model.Users;
-import com.example.foundnlost.data.network.model.UsersDetails;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
@@ -22,9 +21,6 @@ public interface ApiInterface {
 
     @POST("/users/")
     Completable registerUser(@Body Users user);
-
-    @POST("/users/")
-    Completable alterUserDetails(@Body UsersDetails userDetails);
 
     @POST("/emailexists/")
     Single<Boolean> isEmailAvailable(@Query("email") String email);
