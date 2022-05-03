@@ -42,13 +42,8 @@ public class ManageAdvertsFragment extends FlowFragment {
     }
 
     private void setCloseButtonClickAction() {
-        binding.advertsButton.setOnClickListener(view -> new AlertDialog.Builder(requireContext())
-                .setMessage("Czy na pewno chcesz anulować dodawanie ogłoszenia?")
-                .setPositiveButton("Potwierdź", (dialog, arg) -> {
-                    dialog.cancel();
-                    onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment());})
-                .setNegativeButton("Anuluj", null)
-                .show());
+        binding.advertsButton.setOnClickListener(view ->
+                onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment()));
     }
 
 

@@ -31,6 +31,8 @@ public class ProfileFragment extends FlowFragment {
         viewModel = new ViewModelProvider(this,new ViewModelFactory(requireContext())).get(ProfileViewModel.class);
         binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog()
                 .show(requireActivity().getSupportFragmentManager(), ""));
+        binding.aboutAppButton.setOnClickListener(view->onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
+
         return binding.getRoot();
     }
 }

@@ -4,6 +4,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,19 @@ public class ContactInfoDialog extends DialogFragment {
         viewModel = new ViewModelProvider(this,new ViewModelFactory(requireContext())).get(ContactInfoDialogViewModel.class);
 
         binding = ContactInfoDialogBinding.inflate(inflater,container,false);
+
+        binding.button.setOnClickListener(view->{
+            callPhoneNumber();
+        });
+
         return binding.getRoot();
     }
+
+    private void callPhoneNumber() {
+        String phone = "535085225";
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + phone));
+        startActivity(callIntent);
+    }
+
 }
