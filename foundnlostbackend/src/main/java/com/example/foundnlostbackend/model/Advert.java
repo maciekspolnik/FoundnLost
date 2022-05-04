@@ -1,20 +1,24 @@
 package com.example.foundnlostbackend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.Date;
+
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 @Entity
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Advert {
 
-
-    public Advert() {
-    }
-
-    public Advert(String postType, String title, String description, LocalDate date, String location) {
+    public Advert(Users user, String postType, String title, String description, Date date, String location) {
         this.postType = postType;
+        this.user = user;
         this.title = title;
         this.description = description;
         this.date = date;
@@ -25,61 +29,16 @@ public class Advert {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long advertId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private Users user;
+
     private String postType;
-
     private String title;
-
     private String description;
-
-    private LocalDate date;
-
+    private Date date;
     private String location;
 
-    public Long getAdvertId() {
-        return advertId;
-    }
 
-    public void setAdvertId(Long advert_id) {
-        this.advertId = advert_id;
-    }
-
-    public String getPostType() {
-        return postType;
-    }
-
-    public void setPostType(String post_type) {
-        this.postType = post_type;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 }

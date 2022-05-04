@@ -1,16 +1,15 @@
 package com.example.foundnlostbackend.manager;
 
 import com.example.foundnlostbackend.model.Advert;
+import com.example.foundnlostbackend.model.Users;
 import com.example.foundnlostbackend.repository.AdvertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class AdvertManager {
 
-    private AdvertRepository advertRepository;
+    private final AdvertRepository advertRepository;
 
     @Autowired
     public AdvertManager(AdvertRepository advertRepository) {
@@ -22,8 +21,16 @@ public class AdvertManager {
         return advertRepository.findAll();
     }
 
-    public Optional<Advert> findByType(String postType) {
-        return advertRepository.findByPostType(postType);
+    public Advert findByAdvertId(Long advertId) {
+        return advertRepository.findByAdvertId(advertId);
+    }
+
+    public Iterable<Advert> findAllByUser(Users user){
+        return advertRepository.findByUser(user);
+    };
+
+    public Iterable<Advert> findByType(String postType) {
+        return advertRepository.findAllByPostType(postType);
     }
 
     public Advert add(Advert advert) {
@@ -33,4 +40,6 @@ public class AdvertManager {
     public void delete(Long index) {
         advertRepository.deleteById(index);
     }
+
+
 }
