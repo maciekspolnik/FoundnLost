@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.RegisterFragment">
+    tools:context=".ui.fragment.start.RegisterFragment">
 
     <com.example.foundnlost.ui.custom.AppHeader
-        android:id="@+id/appHeader3"
+        android:id="@+id/registerAppHeader"
         android:layout_width="0dp"
         android:layout_height="@dimen/top_bar_height"
+        app:closeButtonVisible="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +26,7 @@
         android:text="@string/registration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appHeader3" />
+        app:layout_constraintTop_toBottomOf="@+id/registerAppHeader" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registerEmailInputLayout"

@@ -38,6 +38,7 @@
     <string name="profile">Profil</string>
     <string name="lost">Zagubione</string>
     <string name="found">Znalezione</string>
+    <string name="manage_adverts">Moje Ogłoszenia</string>
     <string name="main_page_nav">Strona Główna</string>
     <string name="edit_profile_data">Edytuj dane profilu</string>
     <string name="save">Zapisz</string>
@@ -47,4 +48,15 @@
     <string name="confirm">Zatwierdź</string>
     <string name="cancel">Anuluj</string>
     <string name="pick_date">Zaznacz datę urodzenia</string>
+    <string name="current_adverts">Aktualne Ogłoszenia</string>
+    <string name="edit_profile">Edytuj Profil</string>
+    <string name="about_app">O aplikacji</string>
+    <string name="your_adverts">Twoje ogłoszenia</string>
+    <string name="add_advert">Dodaj nowe ogłoszenie</string>
+    <string name="contact_by_email">Skontaktuj się z Osobą zainteresowaną</string>
+    <string name="write_email">Napisz email na adres</string>
+    <string name="or">lub</string>
+    <string name="call">Zadzwoń</string>
+    <string name="cancel_adding_confirm">Czy na pewno chcesz anulować dodawanie ogłoszenia?</string>
+    <string name="registration_successful">Rejestracja przebiega pomyślnie</string>
 </resources>

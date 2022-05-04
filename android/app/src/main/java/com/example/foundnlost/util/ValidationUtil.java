@@ -2,11 +2,12 @@ package com.example.foundnlost.util;
 
 import android.text.InputFilter;
 
+import com.example.foundnlost.R;
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.regex.Pattern;
 
 public abstract class ValidationUtil {
-
-
 
     public static boolean isEmailValid(String email) {
         return Const.EMAIL_REGEX_PATTERN.matcher(email).matches();
@@ -31,5 +32,4 @@ public abstract class ValidationUtil {
             return null;
         };
     }
-
 }

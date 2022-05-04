@@ -1,10 +1,10 @@
 package com.example.foundnlost.ui.activity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.ActivityMainBinding;
-import com.example.foundnlost.ui.fragment.FoundFragment;
-import com.example.foundnlost.ui.fragment.LostFragment;
-import com.example.foundnlost.ui.fragment.MainFragment;
-import com.example.foundnlost.ui.fragment.ProfileFragment;
+import com.example.foundnlost.ui.fragment.FlowFragment;
+import com.example.foundnlost.ui.fragment.main.MainFragment;
+import com.example.foundnlost.ui.fragment.main.ManageAdvertsFragment;
+import com.example.foundnlost.ui.fragment.main.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -23,31 +23,36 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import timber.log.Timber;
+
+public class MainActivity extends AppCompatActivity implements FlowFragment.OnFragmentChangeRequest {
 
     private ActivityMainBinding binding;
     private final List<View> indicatorViews = new ArrayList<>();
     private int currentFragmentId;
 
     private int HOME_ID = 0;
-    private int FOUND_ID = 1;
-    private int LOST_ID = 2;
-    private int PROFILE_ID = 3;
+    private int MANAGE_ID = 1;
+    private int PROFILE_ID = 2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = binding.getRoot();
-        setContentView(view);
+        setContentView(binding.getRoot());
+
         binding.navigation.setOnItemSelectedListener(navigationListener);
         displayFragment(new MainFragment());
         currentFragmentId = HOME_ID;
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) binding.navigation.getChildAt(0);
-        binding.navigation.getMenu().getItem(currentFragmentId).setChecked(true);
+        binding.navigation
+                .getMenu()
+                .getItem(currentFragmentId)
+                .setChecked(true);
         setupIndicators(menuView);
         enableIndicatorForItem(currentFragmentId);
+        addFragmentOnAttachListener();
 
 
     }
@@ -65,11 +70,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableIndicatorForItem(int position) {
-
         for (View view : indicatorViews) {
             view.setVisibility(View.GONE);
         }
         indicatorViews.get(position).setVisibility(View.VISIBLE);
+    }
+
+    private void addFragmentOnAttachListener() {
+        getSupportFragmentManager().addFragmentOnAttachListener((fragmentManager, fragment) -> {
+            Timber.d("Attaching fragment");
+            if (fragment instanceof FlowFragment) {
+                FlowFragment flowFragment = (FlowFragment) fragment;
+                flowFragment.setOnFragmentChangeRequestListener(this);
+            }
+        });
+    }
+    @Override
+    public void onFragmentChangeRequest(Fragment fragment) {
+        if(fragment instanceof DialogFragment){
+            ((DialogFragment) fragment).show(getSupportFragmentManager(), null);
+        }
+        displayFragment(fragment);
     }
 
     private void setupIndicators(BottomNavigationMenuView menuView) {
@@ -92,20 +113,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
 
-            case R.id.nav_found:
-                if (currentFragmentId != FOUND_ID) {
-                    displayFragment(new FoundFragment());
-                    currentFragmentId = FOUND_ID;
+            case R.id.nav_manage:
+                if (currentFragmentId != MANAGE_ID) {
+                    displayFragment(new ManageAdvertsFragment());
+                    currentFragmentId = MANAGE_ID;
                 }
                 return true;
-
-            case R.id.nav_lost:
-                if (currentFragmentId != LOST_ID) {
-                    displayFragment(new LostFragment());
-                    currentFragmentId = LOST_ID;
-                }
-                return true;
-
 
             case R.id.nav_profile:
                 if (currentFragmentId != PROFILE_ID) {
@@ -116,5 +129,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     };
-
 }
