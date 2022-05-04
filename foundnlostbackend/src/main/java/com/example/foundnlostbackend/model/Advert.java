@@ -1,5 +1,7 @@
 package com.example.foundnlostbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -7,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer"})
 @Entity
 @Getter
 @Setter
@@ -28,6 +31,7 @@ public class Advert {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users user;
 
     private String postType;

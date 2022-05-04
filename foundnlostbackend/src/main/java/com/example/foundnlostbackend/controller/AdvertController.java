@@ -28,9 +28,22 @@ public class AdvertController {
         this.usersManager = usersManager;
     }
 
-    @GetMapping
+    @RequestMapping(value = "/find_by_id", method = RequestMethod.GET)
+    public Response<Iterable<Advert>> getAdvertByUserId(@RequestParam Long index) {
+        Users user = usersManager.findById(index);
+        if (user == null) {
+            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+        }
+        Iterable<Advert> adverts = advertManager.findAllByUser(user);
+        if (adverts == null) {
+            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+        }
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, adverts);
+    }
+
+    @RequestMapping(value = "/find_by_type", method = RequestMethod.GET)
     public Response<Advert> getAdvertByType(@RequestParam String type) {
-        Advert advert = advertManager.findByType(type);
+        Iterable<Advert> advert = advertManager.findByType(type);
         if (advert == null) {
             return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
         }
@@ -38,23 +51,23 @@ public class AdvertController {
     }
 
     @PostMapping
-    public Response<Void> addAdvert(@RequestBody AddAdvert addAdvert) {
+    public Response<Advert> addAdvert(@RequestBody AddAdvert addAdvert) {
         Users user = usersManager.findById(addAdvert.getUserId());
         if (user == null) {
             return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
 
         }
-        advertManager.add(AdvertMapper.mapToAdvert(addAdvert, user));
-        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, null);
-    }
+        Advert advert = advertManager.add(AdvertMapper.mapToAdvert(addAdvert, user));
+        if (advert == null) {
+            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
 
-    @PutMapping
-    public Advert alterAdvert(@RequestBody Advert advert) {
-        return advertManager.add(advert);
+        }
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, advert);
     }
 
     @DeleteMapping
-    public void deleteAdvert(@RequestParam Long index) {
+    public Response<Void> deleteAdvert(@RequestParam Long index) {
         advertManager.delete(index);
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, null);
     }
 }

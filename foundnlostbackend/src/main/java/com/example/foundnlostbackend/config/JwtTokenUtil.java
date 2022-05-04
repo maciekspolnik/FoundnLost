@@ -43,17 +43,14 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public String generateToken(Users user) {
-        return doGenerateToken(user.getEmail());
-    }
-
-    private String doGenerateToken(String subject) {
 
         Claims claims = Jwts.claims().setSubject("verification_token");
         claims.put("scopes", List.of(new SimpleGrantedAuthority("ROLE_USER")));
-        claims.put("email", subject);
+        claims.put("email", user.getEmail());
+        claims.put("uuid",user.getUsersId());
         return Jwts.builder()
                 .setClaims(claims)
-                .setIssuer("marczan")
+                .setIssuer("foundnlost")
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + ACCESS_TOKEN_VALIDITY_SECONDS * 1000))
                 .signWith(SignatureAlgorithm.HS256, SIGNING_KEY)

@@ -26,6 +26,7 @@ public class AuthController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Response<String> login(@RequestBody LoginRequest loginRequest) {
+
         Users userData = userManager.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         if (userData == null) {
             return new Response<>(HttpStatus.UNAUTHORIZED.value(), RESPONSE_UNAUTHORISED, null);
@@ -49,12 +50,12 @@ public class AuthController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Response<String> register(@RequestBody Users user) {
+    public Response<Users> register(@RequestBody Users user) {
         if (user == null) {
             return new Response<>(HttpStatus.UNAUTHORIZED.value(), RESPONSE_UNAUTHORISED, null);
         }
-        userManager.addUser(user);
-        return new Response<>(HttpStatus.OK.value(), RESPONSE_SUCCESS, null);
+        user = userManager.addUser(user);
+        return new Response<>(HttpStatus.OK.value(), RESPONSE_SUCCESS, user);
     }
 
 }

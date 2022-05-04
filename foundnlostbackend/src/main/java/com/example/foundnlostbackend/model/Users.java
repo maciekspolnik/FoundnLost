@@ -1,7 +1,7 @@
 package com.example.foundnlostbackend.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Users {
 
     public Users(String name, String surname, String email, String password, String phone, LocalDate dateOfBirth) {
@@ -36,4 +36,7 @@ public class Users {
     private String phone;
     private LocalDate dateOfBirth;
 
+    public Users() {
+
+    }
 }
