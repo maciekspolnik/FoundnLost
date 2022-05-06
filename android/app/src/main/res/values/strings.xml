@@ -45,7 +45,7 @@
     <string name="my_posts">Moje ogłoszenia</string>
     <string name="example_credentials">Kamil Snail</string>
     <string name="log_out">Wyloguj się</string>
-    <string name="confirm">Zatwierdź</string>
+    <string name="confirm">Potwierdź</string>
     <string name="cancel">Anuluj</string>
     <string name="pick_date">Zaznacz datę urodzenia</string>
     <string name="current_adverts">Aktualne Ogłoszenia</string>
@@ -58,5 +58,7 @@
     <string name="or">lub</string>
     <string name="call">Zadzwoń</string>
     <string name="cancel_adding_confirm">Czy na pewno chcesz anulować dodawanie ogłoszenia?</string>
+    <string name="delete_advert_confirm">Czy na pewno chcesz usunąć ogłoszenie?</string>
     <string name="registration_successful">Rejestracja przebiega pomyślnie</string>
+    <string name="error_api">Nie udało się połączyć. Spróbuj ponownie.</string>
 </resources>

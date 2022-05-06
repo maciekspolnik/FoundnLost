@@ -41,7 +41,7 @@ public class DatePickingDialog extends DialogFragment implements DatePickerDialo
     }
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        date = String.format(Locale.getDefault(), "%d-%d-%d", day, month, year);
+        date = String.format(Locale.getDefault(), "%d-%02d-%02d", year, month, day);
     }
 
 }

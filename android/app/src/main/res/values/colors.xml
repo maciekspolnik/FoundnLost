@@ -17,6 +17,7 @@
     <color name="azure">#3F80FF</color>
     <color name="sapphire">#2B59B5</color>
     <color name="amethyst">#9F60C0</color>
+    <color name="amethyst20">#339F60C0</color>
     <color name="main_green">#4F6E71</color>
 
 </resources>

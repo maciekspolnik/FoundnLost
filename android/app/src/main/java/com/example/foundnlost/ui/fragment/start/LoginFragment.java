@@ -8,21 +8,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
-import com.example.foundnlost.ui.activity.StartActivity;
+import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialog;
 import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
-import com.google.android.material.textfield.TextInputLayout;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends FlowFragment {
 
     private LoginViewModel viewModel;
     private FragmentLoginBinding binding;
@@ -38,18 +36,18 @@ public class LoginFragment extends Fragment {
         binding.forgotPasswordTextButton.setOnClickListener(view -> new ForgotPasswordDialog().
                 show(requireActivity().getSupportFragmentManager(), ""));
 
-        binding.loginEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> validateLength(binding.loginEmailTextInputLayout)));
-        binding.loginPasswordEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> validateLength(binding.loginPasswordTextInputLayout)));
+        binding.loginEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.loginEmailTextInputLayout)));
+        binding.loginPasswordEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.loginPasswordTextInputLayout)));
 
         return binding.getRoot();
     }
 
     private void onLoginClicked() {
-        if (validateLength(binding.loginEmailTextInputLayout)
-                && validateLength(binding.loginPasswordTextInputLayout)
+        if (isNotEmpty(binding.loginEmailTextInputLayout)
+                && isNotEmpty(binding.loginPasswordTextInputLayout)
                 && ValidationUtil.isEmailValid(extractText(binding.loginEmailTextInputLayout))
                 && ValidationUtil.isPasswordValid(extractText(binding.loginPasswordTextInputLayout))) {
-            //TODO LOGIKA PODLACZENIA DO LOGOWANIA NA BACKENDZIE
+            viewModel.login();
             Intent intent = new Intent(requireActivity(), MainActivity.class);
             startActivity(intent);
             return;
@@ -57,21 +55,4 @@ public class LoginFragment extends Fragment {
         binding.loginEmailTextInputLayout.setError(" ");
         binding.loginPasswordTextInputLayout.setError(getString(R.string.wrong_login_credentials));
     }
-
-    private String extractText(TextInputLayout textInputLayout) {
-        if (textInputLayout.getEditText() != null) {
-            return textInputLayout.getEditText().getText().toString();
-        }
-        return "";
-    }
-
-    private boolean validateLength(TextInputLayout layout) {
-        if (extractText(layout).isEmpty()) {
-            layout.setError(getText(R.string.field_cannot_be_empty));
-            return false;
-        }
-        layout.setError(null);
-        return true;
-    }
-
 }

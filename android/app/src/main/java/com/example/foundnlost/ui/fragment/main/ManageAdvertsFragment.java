@@ -1,49 +1,64 @@
 package com.example.foundnlost.ui.fragment.main;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.app.AlertDialog;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.foundnlost.databinding.ManageAdvertsFragmentBinding;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.foundnlost.R;
+import com.example.foundnlost.data.network.model.Advert;
+import com.example.foundnlost.databinding.FragmentManageAdvertsBinding;
 import com.example.foundnlost.ui.adapter.AdvertsAdapter;
 import com.example.foundnlost.ui.fragment.FlowFragment;
-import com.example.foundnlost.ui.fragment.dialog.ContactInfoDialog;
-import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialog;
 import com.example.foundnlost.viewModel.ManageAdvertsViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
+
+import java.util.ArrayList;
 
 public class ManageAdvertsFragment extends FlowFragment {
 
     private ManageAdvertsViewModel viewModel;
-    private ManageAdvertsFragmentBinding binding;
+    private FragmentManageAdvertsBinding binding;
+    private AdvertsAdapter adapter;
+    private ArrayList<Advert> adverts = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ManageAdvertsViewModel.class);
-        binding = ManageAdvertsFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentManageAdvertsBinding.inflate(inflater, container, false);
         binding.myAdvertsRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.myAdvertsRecyclerView.setAdapter(new AdvertsAdapter(
-                viewModel.getAdvertsDemo(),
+        adverts = viewModel.getAdvertsDemo();
+
+        adapter = new AdvertsAdapter(
+                adverts,
                 requireContext(),
-                view -> new ContactInfoDialog().show(requireActivity().getSupportFragmentManager(), "")));
+                view -> showConfirmationAlert());
+        adapter.setDrawable(R.drawable.icon_close);
+        binding.myAdvertsRecyclerView.setAdapter(adapter);
         setCloseButtonClickAction();
 
         return binding.getRoot();
     }
 
+    private void showConfirmationAlert() {
+        new AlertDialog.Builder(requireContext())
+                .setMessage(getString(R.string.delete_advert_confirm))
+                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> {
+                    viewModel.deleteAdvert(adapter.returnPosition());
+                })
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show();
+    }
+
     private void setCloseButtonClickAction() {
-        binding.advertsButton.setOnClickListener(view ->
-                onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment()));
+        binding.advertsButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment()));
     }
 
 

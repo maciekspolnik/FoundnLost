@@ -1,20 +1,18 @@
 package com.example.foundnlost.ui.fragment.main;
 
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.foundnlost.R;
 import com.example.foundnlost.commons.AdvertType;
@@ -45,6 +43,7 @@ public class MainFragment extends Fragment {
                 list,
                 requireContext(),
                 view -> new ContactInfoDialog().show(requireActivity().getSupportFragmentManager(), ""));
+        adapter.setDrawable(R.drawable.icon_goback);
         binding.mainRecyclerView.setAdapter(adapter);
         binding.lostIndicator.setOnClickListener(view -> changeTab(AdvertType.LOST));
         binding.foundIndicator.setOnClickListener(view -> changeTab(AdvertType.FOUND));

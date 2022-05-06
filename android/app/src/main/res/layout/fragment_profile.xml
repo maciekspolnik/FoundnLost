@@ -41,7 +41,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="24dp"
             android:text="@string/edit_profile_data"
@@ -60,12 +60,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
+            android:text="tel. 787 056 223"
             android:textColor="@color/black87"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/credentialsTextView"
-            tools:text="tel. 787 056 223" />
+            app:layout_constraintTop_toBottomOf="@+id/credentialsTextView" />
 
         <TextView
             android:id="@+id/birthDateTextView"
@@ -75,13 +75,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:text="TextView"
+            android:text="ur. 27 Stycznia 2021"
             android:textColor="@color/black87"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/numberTextView"
-            tools:text="ur. 27 Stycznia 2021" />
+            app:layout_constraintTop_toBottomOf="@+id/numberTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -91,7 +90,6 @@
         android:layout_width="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         android:text="@string/log_out"
         app:layout_constraintBottom_toTopOf="@+id/aboutAppButton"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/about_app"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

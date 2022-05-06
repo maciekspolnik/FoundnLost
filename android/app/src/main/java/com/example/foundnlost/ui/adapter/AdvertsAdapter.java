@@ -27,6 +27,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
     private int expandedPosition = NOT_EXPANDED;
     private int previousExpandedPosition = NOT_EXPANDED;
     private final Context context;
+    private int drawable;
 
     public AdvertsAdapter(ArrayList<Advert> data, Context context, View.OnClickListener listener) {
         this.data = data;
@@ -34,10 +35,22 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
         this.listener = listener;
     }
 
+    public void setDrawable(int drawable){
+        this.drawable = drawable;
+    }
+
     public void updateData(ArrayList<Advert> data){
         this.data.clear();
-        this.data.addAll(data);
+        this.data = data;
         notifyDataSetChanged();
+    }
+
+    public int returnPosition(){
+        int result =  expandedPosition;
+        data.remove(expandedPosition);
+        notifyItemRemoved(result);
+        expandedPosition = -1;
+        return expandedPosition;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,6 +73,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
 
         private void bindData(int position) {
             Advert advert = data.get(position);
+            infoButton.setImageResource(drawable);
             final boolean isExpanded = position == expandedPosition;
             descTextView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
             dateTextView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);

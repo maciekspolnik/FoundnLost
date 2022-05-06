@@ -7,7 +7,6 @@ import com.example.foundnlost.data.network.model.Advert;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class ManageAdvertsViewModel extends ViewModel {
     private DatabaseHelper databaseHelper;
@@ -23,4 +22,7 @@ public class ManageAdvertsViewModel extends ViewModel {
         return list;
     }
 
+    public void deleteAdvert(int returnPosition) {
+
+    }
 }

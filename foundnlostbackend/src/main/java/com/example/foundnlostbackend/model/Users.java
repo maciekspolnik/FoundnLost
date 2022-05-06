@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Users {
 
-    public Users(String name, String surname, String email, String password, String phone, LocalDate dateOfBirth) {
+    public Users(String name, String surname, String email, String password, String phone, Date dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.password = password;
@@ -34,7 +34,7 @@ public class Users {
     private String email;
     private String password;
     private String phone;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 
     public Users() {
 

@@ -1,20 +1,23 @@
 package com.example.foundnlost.viewModel;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
 import com.example.foundnlost.data.database.entity.UserEntity;
+import com.example.foundnlost.data.network.config.ApiHelper;
+import com.example.foundnlost.data.network.config.ApiHelperImpl;
+import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.UserDto;
 import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import okhttp3.Response;
 
 public class RegisterViewModel extends DisposableViewModel {
 
 
     private final DatabaseHelper databaseHelper;
+    private final ApiHelper apiHelper = new ApiHelperImpl();
 
     private String email;
     private String password;
@@ -29,11 +32,26 @@ public class RegisterViewModel extends DisposableViewModel {
         this.databaseHelper = databaseHelper;
     }
 
-    public LiveData<Response> register() {
+    public MutableLiveData<Response> register() {
         if (registrationResponse == null) {
             registrationResponse = new MutableLiveData<>();
         }
-        //registrationResponse.setValue()
+
+        addDisposable(apiHelper.register(new UserDto(
+                email,
+                password,
+                name,
+                surname,
+                phoneNumber,
+                dateOfBirth
+        ))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> {
+                    registrationResponse.setValue(response);
+                    System.out.println(response.getMessage());
+                }, System.out::println));
+
         return registrationResponse;
     }
 
@@ -65,6 +83,6 @@ public class RegisterViewModel extends DisposableViewModel {
         addDisposable(databaseHelper.insertUser(getUserEntity())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe());
+                .subscribe(()-> System.out.println("XD")));
     }
 }

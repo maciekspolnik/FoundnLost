@@ -8,6 +8,7 @@
     tools:context=".ui.fragment.main.AddAdvertFragment">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="16dp"
@@ -22,6 +23,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="24dp">
+
+            <Button
+                android:id="@+id/dateButton"
+                style="@style/textButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="@color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/dateInputLayout"
+                app:layout_constraintEnd_toEndOf="@+id/dateInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/dateInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/dateInputLayout" />
 
             <TextView
                 android:id="@+id/textView"
