@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/top_bar_height"
+    android:layout_height="64dp"
     android:background="#2B59B5"
     android:elevation="4dp">
 
@@ -21,14 +21,14 @@
         app:layout_constraintEnd_toStartOf="@+id/topbar_close_button"
         app:layout_constraintStart_toEndOf="@+id/topbar_back_button"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginEnd="55dp"
-        app:layout_goneMarginStart="55dp"
+        app:layout_goneMarginEnd="48dp"
+        app:layout_goneMarginStart="48dp"
         tools:text="Topbar Title" />
 
     <ImageButton
         android:id="@+id/topbar_close_button"
-        android:layout_width="55dp"
-        android:layout_height="0dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
         android:padding="20dp"
         android:visibility="visible"
@@ -39,8 +39,8 @@
 
     <ImageButton
         android:id="@+id/topbar_back_button"
-        android:layout_width="55dp"
-        android:layout_height="0dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="?attr/selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

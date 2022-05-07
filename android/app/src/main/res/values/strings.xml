@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Found\'n\'Lost</string>
+    <string name="app_name">Loss Finder</string>
     <string name="login_button_text">Zaloguj się</string>
     <string name="email_address">adres email</string>
     <string name="password_forgotten">Nie pamiętam hasła</string>
