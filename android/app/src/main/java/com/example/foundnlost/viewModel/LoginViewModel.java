@@ -1,18 +1,57 @@
 package com.example.foundnlost.viewModel;
 
-import androidx.lifecycle.ViewModel;
+import android.content.SharedPreferences;
+
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
+import com.example.foundnlost.data.network.config.ApiHelper;
+import com.example.foundnlost.data.network.config.ApiHelperImpl;
+import com.example.foundnlost.data.network.dto.LoginRequest;
+import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
-public class LoginViewModel extends ViewModel {
- private DatabaseHelper databaseHelper;
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
+public class LoginViewModel extends DisposableViewModel {
 
+    private final DatabaseHelper databaseHelper;
+    private final SharedPreferences preferences;
+    private final ApiHelper apiHelper = new ApiHelperImpl();
 
-    public LoginViewModel(DatabaseHelper databaseHelper) {
+    private String email;
+    private String password;
+
+    private MutableLiveData<Response<String>> loginResponse;
+
+    public LoginViewModel(DatabaseHelper databaseHelper, SharedPreferences preferences) {
         this.databaseHelper = databaseHelper;
+        this.preferences = preferences;
     }
 
-    public void login(){}
+    public void setLoginDetails(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public MutableLiveData<Response<String>> login() {
+        if (loginResponse == null) {
+            loginResponse = new MutableLiveData<>();
+        }
+
+        addDisposable(apiHelper.login(new LoginRequest(email, password))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleResponse, System.out::println));
+
+        return loginResponse;
+    }
+
+    private void handleResponse(Response<String> response) {
+        loginResponse.setValue(response);
+        preferences.edit().putString("userToken", (String) response.getResult()).apply();
+    }
 
 }
+

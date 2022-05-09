@@ -24,19 +24,17 @@ public class ContactInfoDialog extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this,new ViewModelFactory(requireContext())).get(ContactInfoDialogViewModel.class);
+        viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ContactInfoDialogViewModel.class);
+        Bundle bundle = getArguments();
+        binding = DialogContactInfoBinding.inflate(inflater, container, false);
 
-        binding = DialogContactInfoBinding.inflate(inflater,container,false);
-
-        binding.button.setOnClickListener(view->{
-            callPhoneNumber();
-        });
+        binding.emailTextView.setText(bundle.getString("email"));
+        binding.button.setOnClickListener(view -> callPhoneNumber(bundle.getString("phoneNumber", "")));
 
         return binding.getRoot();
     }
 
-    private void callPhoneNumber() {
-        String phone = "535085225";
+    private void callPhoneNumber(String phone) {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
         callIntent.setData(Uri.parse("tel:" + phone));
         startActivity(callIntent);

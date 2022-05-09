@@ -14,39 +14,45 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.data.network.model.Advert;
+import com.example.foundnlost.data.network.dto.AdvertDto;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHolder> {
 
     private final View.OnClickListener listener;
-    private ArrayList<Advert> data;
+    private List<AdvertDto> data;
     private final int NOT_EXPANDED = -1;
     private int expandedPosition = NOT_EXPANDED;
     private int previousExpandedPosition = NOT_EXPANDED;
     private final Context context;
     private int drawable;
 
-    public AdvertsAdapter(ArrayList<Advert> data, Context context, View.OnClickListener listener) {
+    public AdvertsAdapter(ArrayList<AdvertDto> data, Context context, View.OnClickListener listener) {
         this.data = data;
         this.context = context;
         this.listener = listener;
     }
 
-    public void setDrawable(int drawable){
+    public void setDrawable(int drawable) {
         this.drawable = drawable;
     }
 
-    public void updateData(ArrayList<Advert> data){
+    public void updateData(List<AdvertDto> data) {
         this.data.clear();
         this.data = data;
         notifyDataSetChanged();
     }
 
-    public int returnPosition(){
-        int result =  expandedPosition;
+    public Long getClickedData(){
+        return data.get(expandedPosition).getUserId();
+    }
+
+
+    public int returnPosition() {
+        int result = expandedPosition;
         data.remove(expandedPosition);
         notifyItemRemoved(result);
         expandedPosition = -1;
@@ -60,11 +66,13 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
         public final TextView dateTextView;
         private final ImageView dateImageView;
         private final ImageButton infoButton;
+        private final TextView typeTextView;
 
         public ViewHolder(View view) {
             super(view);
             titleTextView = view.findViewById(R.id.cardTitle);
             descTextView = view.findViewById(R.id.cardDesc);
+            typeTextView = view.findViewById(R.id.typeTextView);
             locationTextView = view.findViewById(R.id.cardLocation);
             dateTextView = view.findViewById(R.id.cardTime);
             dateImageView = view.findViewById(R.id.cardTimeIcon);
@@ -72,7 +80,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
         }
 
         private void bindData(int position) {
-            Advert advert = data.get(position);
+            AdvertDto advert = data.get(position);
             infoButton.setImageResource(drawable);
             final boolean isExpanded = position == expandedPosition;
             descTextView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
@@ -82,12 +90,13 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
             titleTextView.setText(advert.getTitle());
             descTextView.setText(advert.getDescription());
             locationTextView.setText(advert.getLocation());
-
-            dateTextView.setText(DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
+            typeTextView.setText(advert.getPostType().equals("FOUND") ? "Znaleziono:" : "Zgubiono:  ");
+            typeTextView.setTextColor(ContextCompat.getColor(context, advert.getPostType().equals("FOUND") ? R.color.sapphire : R.color.amethyst));
+            dateTextView.setText(advert.getDate() == null ? "nieznana" : DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
 
             itemView.setBackgroundColor(
                     isExpanded
-                            ? ContextCompat.getColor(context, R.color.black10)
+                            ? ContextCompat.getColor(context, R.color.amethyst20)
                             : Color.TRANSPARENT);
             itemView.setActivated(isExpanded);
 

@@ -1,13 +1,13 @@
-package com.example.foundnlost.data.network.dto;
-
-import java.util.Date;
+package com.example.foundnlostbackend.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
-public class AdvertDto {
+public class AdvertData {
 
     private Long userId;
     private String postType;

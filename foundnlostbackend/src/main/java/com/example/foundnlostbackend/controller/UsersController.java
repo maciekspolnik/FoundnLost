@@ -3,9 +3,7 @@ package com.example.foundnlostbackend.controller;
 import com.example.foundnlostbackend.Const;
 import com.example.foundnlostbackend.data.ContactData;
 import com.example.foundnlostbackend.data.Response;
-import com.example.foundnlostbackend.manager.AdvertManager;
 import com.example.foundnlostbackend.manager.UsersManager;
-import com.example.foundnlostbackend.model.Advert;
 import com.example.foundnlostbackend.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +20,6 @@ public class UsersController {
     private UsersManager usersManager;
 
     @Autowired
-    private AdvertManager advertManager;
-
-    @Autowired
     public UsersController(UsersManager usersManager) {
         this.usersManager = usersManager;
     }
@@ -36,14 +31,7 @@ public class UsersController {
 
     @RequestMapping(value = "/contact_data", method = RequestMethod.GET)
     public Response<ContactData> getContactDataById(@RequestParam Long index) {
-        Advert advert = advertManager.findByAdvertId(index);
-        if (advert == null) {
-            return new Response<>(
-                    HttpStatus.NO_CONTENT.value(),
-                    Const.RESPONSE_NO_DATA,
-                    null);
-        }
-        Users user = usersManager.findById(advert.getUser().getUsersId());
+        Users user = usersManager.findById(index);
         if (user == null) {
             return new Response<>(
                     HttpStatus.NO_CONTENT.value(),

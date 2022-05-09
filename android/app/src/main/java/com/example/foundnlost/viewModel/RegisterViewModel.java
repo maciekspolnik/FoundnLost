@@ -38,10 +38,10 @@ public class RegisterViewModel extends DisposableViewModel {
         }
 
         addDisposable(apiHelper.register(new UserDto(
-                email,
-                password,
                 name,
                 surname,
+                email,
+                password,
                 phoneNumber,
                 dateOfBirth
         ))
@@ -49,18 +49,17 @@ public class RegisterViewModel extends DisposableViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> {
                     registrationResponse.setValue(response);
-                    System.out.println(response.getMessage());
                 }, System.out::println));
 
         return registrationResponse;
     }
 
-    public void setLoginDetails(String email, String password) {
+    public void setRegisterDetails(String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public void setLoginDetails(String name, String surname, String phoneNumber, String dateOfBirth) {
+    public void setRegisterDetails(String name, String surname, String phoneNumber, String dateOfBirth) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;

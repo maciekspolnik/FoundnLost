@@ -1,6 +1,5 @@
 package com.example.foundnlost.ui.activity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.example.foundnlost.R;
 import com.example.foundnlost.databinding.ActivityMainBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
-import com.example.foundnlost.ui.fragment.main.MainFragment;
+import com.example.foundnlost.ui.fragment.main.AdvertsFragment;
 import com.example.foundnlost.ui.fragment.main.ManageAdvertsFragment;
 import com.example.foundnlost.ui.fragment.main.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements FlowFragment.OnFr
         setContentView(binding.getRoot());
 
         binding.navigation.setOnItemSelectedListener(navigationListener);
-        displayFragment(new MainFragment());
+        displayFragment(new AdvertsFragment());
         currentFragmentId = HOME_ID;
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) binding.navigation.getChildAt(0);
         binding.navigation
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements FlowFragment.OnFr
         switch (item.getItemId()) {
             case R.id.nav_home:
                 if (currentFragmentId != HOME_ID) {
-                    displayFragment(new MainFragment());
+                    displayFragment(new AdvertsFragment());
                     currentFragmentId = HOME_ID;
                 }
                 return true;

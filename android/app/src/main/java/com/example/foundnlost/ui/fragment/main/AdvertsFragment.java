@@ -1,22 +1,20 @@
 package com.example.foundnlost.ui.fragment.main;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.commons.AdvertType;
-import com.example.foundnlost.data.network.model.Advert;
+import com.example.foundnlost.data.network.dto.AdvertDto;
+import com.example.foundnlost.data.network.dto.ContactDataDto;
+import com.example.foundnlost.data.network.dto.Response;
 import com.example.foundnlost.databinding.FragmentAdvertsBinding;
 import com.example.foundnlost.ui.adapter.AdvertsAdapter;
 import com.example.foundnlost.ui.fragment.dialog.ContactInfoDialog;
@@ -24,14 +22,14 @@ import com.example.foundnlost.viewModel.MainViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainFragment extends Fragment {
+public class AdvertsFragment extends Fragment {
 
     private MainViewModel viewModel;
     private FragmentAdvertsBinding binding;
-    private AdvertType currentIndicator;
     private AdvertsAdapter adapter;
-    private ArrayList<Advert> list = new ArrayList<>();
+    private ArrayList<AdvertDto> list = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,30 +40,32 @@ public class MainFragment extends Fragment {
         adapter = new AdvertsAdapter(
                 list,
                 requireContext(),
-                view -> new ContactInfoDialog().show(requireActivity().getSupportFragmentManager(), ""));
+                view -> viewModel.getContactData(adapter.getClickedData()).observe(getViewLifecycleOwner(), this::consumeDataResponse));
         adapter.setDrawable(R.drawable.icon_goback);
         binding.mainRecyclerView.setAdapter(adapter);
-        binding.lostIndicator.setOnClickListener(view -> changeTab(AdvertType.LOST));
-        binding.foundIndicator.setOnClickListener(view -> changeTab(AdvertType.FOUND));
-        changeTab(AdvertType.FOUND);
+        loadAdverts();
 
         return binding.getRoot();
     }
 
-    private void changeTab(AdvertType indicator) {
-        if (indicator == currentIndicator) {
-            return;
-        }
-        list = indicator == AdvertType.FOUND ? viewModel.getFoundAdverts() : viewModel.getLostAdverts();
-        adapter.updateData(indicator == AdvertType.FOUND ? viewModel.getFoundAdverts() : viewModel.getLostAdverts());
-        adjustButton(binding.foundIndicator, indicator == AdvertType.FOUND);
-        adjustButton(binding.lostIndicator, indicator == AdvertType.LOST);
-        currentIndicator = indicator;
+    private void consumeDataResponse(Response<ContactDataDto> response) {
+        ContactInfoDialog dialog = new ContactInfoDialog();
+        Bundle arguments = new Bundle();
+        arguments.putString("email",response.getResult().getEmail());
+        arguments.putString("phoneNumber",response.getResult().getPhoneNumber());
+        dialog.setArguments(arguments);
+        dialog.show(requireActivity().getSupportFragmentManager(), "");
     }
 
-    private void adjustButton(Button button, boolean clicked) {
-        button.setClickable(!clicked);
-        button.setElevation(clicked ? 4f : 0f);
-        button.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), clicked ? R.color.french_rose : R.color.black10)));
+
+    private void loadAdverts() {
+        viewModel.getAdvertData().observe(getViewLifecycleOwner(), this::consumeResponse);
+    }
+
+    private void consumeResponse(List<AdvertDto> listResponse) {
+        if (listResponse == null || listResponse.isEmpty()) {
+            return;
+        }
+        adapter.updateData(listResponse);
     }
 }

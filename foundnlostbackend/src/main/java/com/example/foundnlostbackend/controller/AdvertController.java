@@ -2,6 +2,7 @@ package com.example.foundnlostbackend.controller;
 
 import com.example.foundnlostbackend.Const;
 import com.example.foundnlostbackend.data.AddAdvert;
+import com.example.foundnlostbackend.data.AdvertData;
 import com.example.foundnlostbackend.data.Response;
 import com.example.foundnlostbackend.manager.AdvertManager;
 import com.example.foundnlostbackend.manager.UsersManager;
@@ -11,6 +12,9 @@ import com.example.foundnlostbackend.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/advert/")
@@ -29,25 +33,25 @@ public class AdvertController {
     }
 
     @RequestMapping(value = "/find_by_id", method = RequestMethod.GET)
-    public Response<Iterable<Advert>> getAdvertByUserId(@RequestParam Long index) {
+    public List<AdvertData> getAdvertByUserId(@RequestParam Long index) {
         Users user = usersManager.findById(index);
         if (user == null) {
-            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+            return null;
         }
         Iterable<Advert> adverts = advertManager.findAllByUser(user);
         if (adverts == null) {
-            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+            return null;
         }
-        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, adverts);
+        return advertMapper(adverts);
     }
 
-    @RequestMapping(value = "/find_by_type", method = RequestMethod.GET)
-    public Response<Advert> getAdvertByType(@RequestParam String type) {
-        Iterable<Advert> advert = advertManager.findByType(type);
-        if (advert == null) {
-            return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
+    @RequestMapping(method = RequestMethod.GET)
+    public List<AdvertData> getAll() {
+        Iterable<Advert> adverts = advertManager.findAll();
+        if (adverts == null) {
+            return null;
         }
-        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, advert);
+        return advertMapper(adverts);
     }
 
     @PostMapping
@@ -70,4 +74,23 @@ public class AdvertController {
         advertManager.delete(index);
         return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, null);
     }
+
+    private List<AdvertData> advertMapper(Iterable<Advert> adverts){
+        List<AdvertData> list = new ArrayList<>();
+        for (Advert a : adverts) {
+            AdvertData data = new AdvertData(
+                    a.getUser().getUsersId(),
+                    a.getPostType(),
+                    a.getTitle(),
+                    a.getDescription(),
+                    a.getDate(),
+                    a.getLocation()
+            );
+            list.add(data);
+        }
+
+        return list;
+    }
+
+
 }

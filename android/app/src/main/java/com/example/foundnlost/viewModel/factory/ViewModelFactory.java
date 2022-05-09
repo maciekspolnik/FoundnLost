@@ -1,11 +1,13 @@
 package com.example.foundnlost.viewModel.factory;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.foundnlost.data.PreferencesHelper;
 import com.example.foundnlost.data.database.DatabaseHelper;
 import com.example.foundnlost.data.database.DatabaseHelperImpl;
 import com.example.foundnlost.viewModel.AddAdvertDialogViewModel;
@@ -22,9 +24,10 @@ import java.util.Objects;
 public class ViewModelFactory implements ViewModelProvider.Factory {
 
     private final DatabaseHelper databaseHelper;
+    private final SharedPreferences preferencesHelper;
 
     public ViewModelFactory(Context context) {
-
+        this.preferencesHelper = PreferencesHelper.getPreferences(context);
         this.databaseHelper = new DatabaseHelperImpl(context);
     }
 
@@ -42,13 +45,13 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             return Objects.requireNonNull(modelClass.cast(new ContactInfoDialogViewModel(databaseHelper)));
         }
         if (modelClass.isAssignableFrom(LoginViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new LoginViewModel(databaseHelper)));
+            return Objects.requireNonNull(modelClass.cast(new LoginViewModel(databaseHelper, preferencesHelper)));
         }
         if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new MainViewModel(databaseHelper)));
         }
         if (modelClass.isAssignableFrom(ManageAdvertsViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new ManageAdvertsViewModel(databaseHelper)));
+            return Objects.requireNonNull(modelClass.cast(new ManageAdvertsViewModel(databaseHelper, preferencesHelper)));
         }
         if (modelClass.isAssignableFrom(RegisterViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new RegisterViewModel(databaseHelper)));

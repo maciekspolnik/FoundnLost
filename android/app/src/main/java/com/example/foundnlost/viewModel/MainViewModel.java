@@ -1,34 +1,52 @@
 package com.example.foundnlost.viewModel;
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
-import com.example.foundnlost.data.network.model.Advert;
+import com.example.foundnlost.data.network.config.ApiHelper;
+import com.example.foundnlost.data.network.config.ApiHelperImpl;
+import com.example.foundnlost.data.network.dto.AdvertDto;
+import com.example.foundnlost.data.network.dto.ContactDataDto;
+import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
-public class MainViewModel extends ViewModel {
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.schedulers.Schedulers;
+
+public class MainViewModel extends DisposableViewModel {
     private final DatabaseHelper databaseHelper;
+    private final ApiHelper apiHelper = new ApiHelperImpl();
+    private MutableLiveData<List<AdvertDto>> dataResponse;
+    private MutableLiveData<Response<ContactDataDto>> contactDataResponse;
+
 
     public MainViewModel(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
 
-    public ArrayList<Advert> getLostAdverts(){
-        ArrayList<Advert> list = new ArrayList<>();
-        list.add(new Advert(1L, "LOST", "Skrzynka", "Zgubiono zieloną skrzynke, na znalazcę czeka nagroda", new Date(), "Tutaj"));
-        list.add(new Advert(1L, "LOST", "Skrzynka", "Zgubiono zieloną skrzynke, na znalazcę czeka nagroda", new Date(), "Tutaj"));
-        return list;
+
+    public MutableLiveData<List<AdvertDto>> getAdvertData() {
+        if (dataResponse == null) {
+            dataResponse = new MutableLiveData<>();
+        }
+        addDisposable(apiHelper.getAllAdverts()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(listResponse -> dataResponse.setValue(listResponse), System.out::println));
+        return dataResponse;
     }
 
-    public ArrayList<Advert> getFoundAdverts(){
-        ArrayList<Advert> list = new ArrayList<>();
-        list.add(new Advert(1L, "FOUND", "Breloczek", "Znaleziono breloczek do kluczy, przy kontakcie proszę o podanie jego wyglądu w celu weryfikacji", new Date(), "Tutaj"));
-        list.add(new Advert(1L, "FOUND", "Breloczek", "Znaleziono breloczek do kluczy, przy kontakcie proszę o podanie jego wyglądu w celu weryfikacji", new Date(), "Tutaj"));
-        return list;
+    public MutableLiveData<Response<ContactDataDto>> getContactData(Long index) {
+        if (contactDataResponse == null) {
+            contactDataResponse = new MutableLiveData<>();
+        }
+        addDisposable(apiHelper.getContactData(index)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(response -> contactDataResponse.setValue(response), System.out::println));
+        return contactDataResponse;
     }
-
-
 
 }

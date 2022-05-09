@@ -8,6 +8,7 @@ import com.example.foundnlost.data.network.dto.UserDto;
 import com.example.foundnlost.data.network.model.Advert;
 import com.example.foundnlost.data.network.model.Users;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Single;
@@ -20,8 +21,9 @@ public class ApiHelperImpl implements ApiHelper {
     }
 
     @Override
-    public Response<String> login(LoginRequest loginRequest) {
-        return null;
+    public Single<Response<String>> login(LoginRequest loginRequest) {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.login(loginRequest);
     }
 
     @Override
@@ -35,13 +37,9 @@ public class ApiHelperImpl implements ApiHelper {
     }
 
     @Override
-    public Single<ContactDataDto> getContactData(int index) {
-        return null;
-    }
-
-    @Override
-    public Single<Response<UserDto>> registerUser(Users user) {
-        return null;
+    public Single<Response<ContactDataDto>> getContactData(Long index) {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.getContactData(index);
     }
 
     @Override
@@ -55,17 +53,21 @@ public class ApiHelperImpl implements ApiHelper {
     }
 
     @Override
-    public Single<AdvertDto> deleteAdvert() {
-        return null;
+    public Single<AdvertDto> deleteAdvert(Long position) {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.deleteAdvert(position);
     }
 
     @Override
-    public Single<List<AdvertDto>> findAdvertByUserId(Long id) {
-        return null;
+    public Single<ArrayList<AdvertDto>> getAdvertsById(Long id) {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.getAdvertsById(id);
     }
 
     @Override
-    public Single<List<AdvertDto>> findAdvertByType(String type) {
-        return null;
+    public Single<List<AdvertDto>> getAllAdverts() {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.getAllAdverts();
     }
+
 }

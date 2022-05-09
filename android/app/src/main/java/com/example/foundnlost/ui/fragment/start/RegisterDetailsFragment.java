@@ -33,7 +33,7 @@ public class RegisterDetailsFragment extends FlowFragment {
 
         binding.registrationButton.setOnClickListener(view -> {
             if (binding.registrationAgreementCheckBox.isChecked()) {
-                viewModel.setLoginDetails(
+                viewModel.setRegisterDetails(
                         extractText(binding.registerDetailsNameInputLayout),
                         extractText(binding.registerDetailsSurnameInputLayout),
                         extractText(binding.registerDetailsPhoneInputLayout),

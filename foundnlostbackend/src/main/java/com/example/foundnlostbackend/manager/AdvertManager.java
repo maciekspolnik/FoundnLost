@@ -29,10 +29,6 @@ public class AdvertManager {
         return advertRepository.findByUser(user);
     };
 
-    public Iterable<Advert> findByType(String postType) {
-        return advertRepository.findAllByPostType(postType);
-    }
-
     public Advert add(Advert advert) {
         return advertRepository.save(advert);
     }

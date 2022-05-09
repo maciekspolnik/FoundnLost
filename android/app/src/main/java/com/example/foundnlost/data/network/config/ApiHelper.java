@@ -8,6 +8,7 @@ import com.example.foundnlost.data.network.dto.UserDto;
 import com.example.foundnlost.data.network.model.Advert;
 import com.example.foundnlost.data.network.model.Users;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Single;
@@ -16,24 +17,22 @@ public interface ApiHelper {
 
     Single<Response<Users>> register(UserDto user);
 
-    Response<String> login(LoginRequest loginRequest);
+    Single<Response<String>> login(LoginRequest loginRequest);
 
     Response<Boolean> isTokenValid(String email, String token);
 
     Single<UserDto> getUsers(int index);
 
-    Single<ContactDataDto> getContactData(int index);
-
-    Single<Response<UserDto>> registerUser(Users user);
+    Single<Response<ContactDataDto>> getContactData(Long index);
 
     Single<Boolean> isEmailAvailable(String email);
 
     Single<AdvertDto> addAdvert(Advert advert);
 
-    Single<AdvertDto> deleteAdvert();
+    Single<AdvertDto> deleteAdvert(Long position);
 
-    Single<List<AdvertDto>> findAdvertByUserId(Long id);
+    Single<ArrayList<AdvertDto>> getAdvertsById(Long id);
 
-    Single<List<AdvertDto>> findAdvertByType(String type);
+    Single<List<AdvertDto>> getAllAdverts();
 
 }

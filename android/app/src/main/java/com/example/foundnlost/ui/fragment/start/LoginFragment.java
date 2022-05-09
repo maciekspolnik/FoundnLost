@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
+import com.example.foundnlost.data.network.dto.Response;
 import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.fragment.FlowFragment;
@@ -19,6 +20,7 @@ import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
+import com.google.android.material.snackbar.Snackbar;
 
 public class LoginFragment extends FlowFragment {
 
@@ -47,12 +49,24 @@ public class LoginFragment extends FlowFragment {
                 && isNotEmpty(binding.loginPasswordTextInputLayout)
                 && ValidationUtil.isEmailValid(extractText(binding.loginEmailTextInputLayout))
                 && ValidationUtil.isPasswordValid(extractText(binding.loginPasswordTextInputLayout))) {
-            viewModel.login();
-            Intent intent = new Intent(requireActivity(), MainActivity.class);
-            startActivity(intent);
-            return;
+            viewModel.setLoginDetails(extractText(binding.loginEmailTextInputLayout), extractText(binding.loginPasswordTextInputLayout));
+            viewModel.login().observe(getViewLifecycleOwner(), this::handleResponse);
         }
-        binding.loginEmailTextInputLayout.setError(" ");
-        binding.loginPasswordTextInputLayout.setError(getString(R.string.wrong_login_credentials));
+    }
+
+    private void handleResponse(Response<String> response) {
+        switch ((response.getMessage())) {
+            case "SUCCESS":
+                Intent intent = new Intent(requireActivity(), MainActivity.class);
+                startActivity(intent);
+                return;
+            case "UNAUTHORISED":
+                binding.loginEmailTextInputLayout.setError(" ");
+                binding.loginPasswordTextInputLayout.setError(getString(R.string.wrong_login_credentials));
+                return;
+            default:
+                Snackbar.make(requireView(), getText(R.string.error_api), Snackbar.LENGTH_LONG).show();
+
+        }
     }
 }

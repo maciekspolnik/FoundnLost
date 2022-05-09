@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.data.network.model.Advert;
+import com.example.foundnlost.data.network.dto.AdvertDto;
 import com.example.foundnlost.databinding.FragmentManageAdvertsBinding;
 import com.example.foundnlost.ui.adapter.AdvertsAdapter;
 import com.example.foundnlost.ui.fragment.FlowFragment;
@@ -26,7 +26,6 @@ public class ManageAdvertsFragment extends FlowFragment {
     private ManageAdvertsViewModel viewModel;
     private FragmentManageAdvertsBinding binding;
     private AdvertsAdapter adapter;
-    private ArrayList<Advert> adverts = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,25 +33,26 @@ public class ManageAdvertsFragment extends FlowFragment {
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ManageAdvertsViewModel.class);
         binding = FragmentManageAdvertsBinding.inflate(inflater, container, false);
         binding.myAdvertsRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adverts = viewModel.getAdvertsDemo();
+        viewModel.getAdvertData().observe(getViewLifecycleOwner(),this::consumeResponse);
 
-        adapter = new AdvertsAdapter(
-                adverts,
-                requireContext(),
-                view -> showConfirmationAlert());
-        adapter.setDrawable(R.drawable.icon_close);
-        binding.myAdvertsRecyclerView.setAdapter(adapter);
         setCloseButtonClickAction();
 
         return binding.getRoot();
     }
 
+    private void consumeResponse(ArrayList<AdvertDto> advertDtos) {
+        adapter = new AdvertsAdapter(
+                advertDtos,
+                requireContext(),
+                view -> showConfirmationAlert());
+        adapter.setDrawable(R.drawable.icon_close);
+        binding.myAdvertsRecyclerView.setAdapter(adapter);
+    }
+
     private void showConfirmationAlert() {
         new AlertDialog.Builder(requireContext())
                 .setMessage(getString(R.string.delete_advert_confirm))
-                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> {
-                    viewModel.deleteAdvert(adapter.returnPosition());
-                })
+                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> viewModel.deleteAdvert(adapter.returnPosition()))
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }

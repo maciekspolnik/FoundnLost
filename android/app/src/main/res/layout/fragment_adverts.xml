@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.main.MainFragment">
+    tools:context=".ui.fragment.main.AdvertsFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/azure"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
         android:id="@+id/textView11"
@@ -23,81 +31,10 @@
         android:id="@+id/mainRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabsIndicator" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/tabsIndicator"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-        <Button
-            android:id="@+id/lostIndicator"
-            style="@style/indicatorButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/round_corners_bottomsheet"
-            android:backgroundTint="@color/black10"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/foundIndicator"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/foundIndicator"
-            style="@style/indicatorButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@drawable/round_corners_bottomsheet"
-            app:layout_constraintBottom_toTopOf="@+id/view"
-            app:layout_constraintEnd_toStartOf="@id/lostIndicator"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:text="@string/found"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/foundIndicator"
-            app:layout_constraintEnd_toStartOf="@+id/lostIndicator"
-            app:layout_constraintStart_toStartOf="@+id/foundIndicator"
-            app:layout_constraintTop_toTopOf="@+id/foundIndicator" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp"
-            android:background="@color/purple_700"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:text="@string/lost"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/lostIndicator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/lostIndicator"
-            app:layout_constraintTop_toTopOf="@+id/lostIndicator" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

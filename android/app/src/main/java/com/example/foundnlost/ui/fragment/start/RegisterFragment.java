@@ -29,16 +29,31 @@ public class RegisterFragment extends FlowFragment {
 
         binding.registerAppHeader.setBackClickedListener(view -> requireActivity().onBackPressed());
         binding.registerNextButton.setOnClickListener(view -> {
-            if (!isNotEmpty(binding.registerEmailInputLayout) || !isValidPassword())
-                viewModel.setLoginDetails(
-                        extractText(binding.registerEmailInputLayout),
-                        extractText(binding.registerPasswordInputLayout));
+            if (!isNotEmpty(binding.registerEmailInputLayout) || !isValidPassword()) {
+                return;
+            }
+            viewModel.setRegisterDetails(
+                    extractText(binding.registerEmailInputLayout),
+                    extractText(binding.registerPasswordInputLayout));
             onFragmentChangeRequestListener.onFragmentChangeRequest(new RegisterDetailsFragment());
+
         });
 
-        binding.registerEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.registerEmailInputLayout)));
-        binding.registerPasswordEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.registerPasswordInputLayout)));
-        binding.registerPasswordConfirmEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.registerPasswordConfirmInputLayout)));
+        binding.registerEmailEditText.addTextChangedListener(new
+
+                TextChangedWatcher((s, start, before, count) ->
+
+                isNotEmpty(binding.registerEmailInputLayout)));
+        binding.registerPasswordEditText.addTextChangedListener(new
+
+                TextChangedWatcher((s, start, before, count) ->
+
+                isNotEmpty(binding.registerPasswordInputLayout)));
+        binding.registerPasswordConfirmEditText.addTextChangedListener(new
+
+                TextChangedWatcher((s, start, before, count) ->
+
+                isNotEmpty(binding.registerPasswordConfirmInputLayout)));
 
         return binding.getRoot();
     }

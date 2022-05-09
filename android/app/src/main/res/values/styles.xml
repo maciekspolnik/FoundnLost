@@ -66,11 +66,11 @@
     <style name="bottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="itemIconTint">@color/white</item>
         <item name="itemTextColor">@color/white</item>
-        <item name="android:background">@color/purple_700</item>
+        <item name="android:background">@color/sapphire</item>
     </style>
 
     <style name="Widget.Theme.FoundnLost.MyView" parent="">
-        <item name="android:background">@color/purple_700</item>
+        <item name="android:background">@color/sapphire</item>
         <item name="android:layout_height">@dimen/top_bar_height</item>
     </style>
 

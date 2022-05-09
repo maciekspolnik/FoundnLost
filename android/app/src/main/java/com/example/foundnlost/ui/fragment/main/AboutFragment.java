@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.foundnlost.databinding.AboutFragmentBinding;
+import com.example.foundnlost.databinding.FragmentAboutBinding;
 
 public class AboutFragment extends Fragment {
 
-    private AboutFragmentBinding binding;
+    private FragmentAboutBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = AboutFragmentBinding.inflate(inflater, container, false);
+        binding = FragmentAboutBinding.inflate(inflater, container, false);
         binding.appHeader3.setBackClickedListener(view -> requireActivity().onBackPressed());
         return binding.getRoot();
     }
