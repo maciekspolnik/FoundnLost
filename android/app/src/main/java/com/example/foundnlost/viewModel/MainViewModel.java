@@ -7,7 +7,7 @@ import com.example.foundnlost.data.network.config.ApiHelper;
 import com.example.foundnlost.data.network.config.ApiHelperImpl;
 import com.example.foundnlost.data.network.dto.AdvertDto;
 import com.example.foundnlost.data.network.dto.ContactDataDto;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class MainViewModel extends DisposableViewModel {
     private final DatabaseHelper databaseHelper;
     private final ApiHelper apiHelper = new ApiHelperImpl();
     private MutableLiveData<List<AdvertDto>> dataResponse;
-    private MutableLiveData<Response<ContactDataDto>> contactDataResponse;
+    private MutableLiveData<Resource<ContactDataDto>> contactDataResponse;
 
 
     public MainViewModel(DatabaseHelper databaseHelper) {
@@ -38,7 +38,7 @@ public class MainViewModel extends DisposableViewModel {
         return dataResponse;
     }
 
-    public MutableLiveData<Response<ContactDataDto>> getContactData(Long index) {
+    public MutableLiveData<Resource<ContactDataDto>> getContactData(Long index) {
         if (contactDataResponse == null) {
             contactDataResponse = new MutableLiveData<>();
         }

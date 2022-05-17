@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.fragment.FlowFragment;
@@ -54,7 +54,7 @@ public class LoginFragment extends FlowFragment {
         }
     }
 
-    private void handleResponse(Response<String> response) {
+    private void handleResponse(Resource<String> response) {
         switch ((response.getMessage())) {
             case "SUCCESS":
                 Intent intent = new Intent(requireActivity(), MainActivity.class);

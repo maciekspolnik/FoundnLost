@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,7 +41,7 @@ public class AdvertController {
         if (adverts == null) {
             return null;
         }
-        return advertMapper(adverts);
+        return AdvertMapper.mapToAdvertDataList(adverts);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -51,7 +50,7 @@ public class AdvertController {
         if (adverts == null) {
             return null;
         }
-        return advertMapper(adverts);
+        return AdvertMapper.mapToAdvertDataList(adverts);
     }
 
     @PostMapping
@@ -66,7 +65,7 @@ public class AdvertController {
             return new Response<>(HttpStatus.NO_CONTENT.value(), Const.RESPONSE_NO_DATA, null);
 
         }
-        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, advert);
+        return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, AdvertMapper.mapToAdvertData(advert));
     }
 
     @DeleteMapping
@@ -75,22 +74,6 @@ public class AdvertController {
         return new Response<>(HttpStatus.OK.value(), Const.RESPONSE_SUCCESS, null);
     }
 
-    private List<AdvertData> advertMapper(Iterable<Advert> adverts){
-        List<AdvertData> list = new ArrayList<>();
-        for (Advert a : adverts) {
-            AdvertData data = new AdvertData(
-                    a.getUser().getUsersId(),
-                    a.getPostType(),
-                    a.getTitle(),
-                    a.getDescription(),
-                    a.getDate(),
-                    a.getLocation()
-            );
-            list.add(data);
-        }
-
-        return list;
-    }
 
 
 }

@@ -7,13 +7,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class Response<T> {
+public class Resource<T> {
 
     private int status;
     private String message;
     private T result;
 
-    public Response(int status, String message, T result) {
+    public Resource(int status, String message, T result) {
         this.status = status;
         this.message = message;
         this.result = result;

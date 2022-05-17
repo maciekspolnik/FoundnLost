@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.foundnlost.R;
 import com.example.foundnlost.data.network.dto.AdvertDto;
 import com.example.foundnlost.data.network.dto.ContactDataDto;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.databinding.FragmentAdvertsBinding;
 import com.example.foundnlost.ui.adapter.AdvertsAdapter;
 import com.example.foundnlost.ui.fragment.dialog.ContactInfoDialog;
@@ -48,7 +48,7 @@ public class AdvertsFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void consumeDataResponse(Response<ContactDataDto> response) {
+    private void consumeDataResponse(Resource<ContactDataDto> response) {
         ContactInfoDialog dialog = new ContactInfoDialog();
         Bundle arguments = new Bundle();
         arguments.putString("email",response.getResult().getEmail());

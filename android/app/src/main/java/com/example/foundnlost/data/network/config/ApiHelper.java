@@ -3,10 +3,10 @@ package com.example.foundnlost.data.network.config;
 import com.example.foundnlost.data.network.dto.AdvertDto;
 import com.example.foundnlost.data.network.dto.ContactDataDto;
 import com.example.foundnlost.data.network.dto.LoginRequest;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.NewAdvert;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.data.network.dto.UserDto;
-import com.example.foundnlost.data.network.model.Advert;
-import com.example.foundnlost.data.network.model.Users;
+import com.example.foundnlost.data.network.dto.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,19 +15,15 @@ import io.reactivex.rxjava3.core.Single;
 
 public interface ApiHelper {
 
-    Single<Response<Users>> register(UserDto user);
+    Single<Resource<UserResponse>> register(UserDto user);
 
-    Single<Response<String>> login(LoginRequest loginRequest);
+    Single<Resource<String>> login(LoginRequest loginRequest);
 
-    Response<Boolean> isTokenValid(String email, String token);
+    Single<Resource<Boolean>> isTokenValid(String email, String token);
 
-    Single<UserDto> getUsers(int index);
+    Single<Resource<ContactDataDto>> getContactData(Long index);
 
-    Single<Response<ContactDataDto>> getContactData(Long index);
-
-    Single<Boolean> isEmailAvailable(String email);
-
-    Single<AdvertDto> addAdvert(Advert advert);
+    Single<Resource<AdvertDto>> addAdvert(NewAdvert advert);
 
     Single<AdvertDto> deleteAdvert(Long position);
 

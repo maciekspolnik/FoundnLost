@@ -8,7 +8,8 @@ import com.example.foundnlost.data.database.DatabaseHelper;
 import com.example.foundnlost.data.network.config.ApiHelper;
 import com.example.foundnlost.data.network.config.ApiHelperImpl;
 import com.example.foundnlost.data.network.dto.LoginRequest;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.Resource;
+import com.example.foundnlost.util.JwtUtil;
 import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -23,7 +24,7 @@ public class LoginViewModel extends DisposableViewModel {
     private String email;
     private String password;
 
-    private MutableLiveData<Response<String>> loginResponse;
+    private MutableLiveData<Resource<String>> loginResponse;
 
     public LoginViewModel(DatabaseHelper databaseHelper, SharedPreferences preferences) {
         this.databaseHelper = databaseHelper;
@@ -35,7 +36,7 @@ public class LoginViewModel extends DisposableViewModel {
         this.password = password;
     }
 
-    public MutableLiveData<Response<String>> login() {
+    public MutableLiveData<Resource<String>> login() {
         if (loginResponse == null) {
             loginResponse = new MutableLiveData<>();
         }
@@ -48,9 +49,12 @@ public class LoginViewModel extends DisposableViewModel {
         return loginResponse;
     }
 
-    private void handleResponse(Response<String> response) {
+    private void handleResponse(Resource<String> response) {
         loginResponse.setValue(response);
-        preferences.edit().putString("userToken", (String) response.getResult()).apply();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putLong("userId", JwtUtil.decodeUserInfo(response.getResult()));
+        editor.putString("userToken", response.getResult()).apply();
+        editor.apply();
     }
 
 }

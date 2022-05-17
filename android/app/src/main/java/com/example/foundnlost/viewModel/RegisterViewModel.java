@@ -6,7 +6,7 @@ import com.example.foundnlost.data.database.DatabaseHelper;
 import com.example.foundnlost.data.database.entity.UserEntity;
 import com.example.foundnlost.data.network.config.ApiHelper;
 import com.example.foundnlost.data.network.config.ApiHelperImpl;
-import com.example.foundnlost.data.network.dto.Response;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.data.network.dto.UserDto;
 import com.example.foundnlost.viewModel.factory.DisposableViewModel;
 
@@ -26,13 +26,13 @@ public class RegisterViewModel extends DisposableViewModel {
     private String phoneNumber;
     private String dateOfBirth;
 
-    private MutableLiveData<Response> registrationResponse;
+    private MutableLiveData<Resource> registrationResponse;
 
     public RegisterViewModel(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
 
-    public MutableLiveData<Response> register() {
+    public MutableLiveData<Resource> register() {
         if (registrationResponse == null) {
             registrationResponse = new MutableLiveData<>();
         }

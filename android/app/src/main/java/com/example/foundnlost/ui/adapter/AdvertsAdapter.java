@@ -1,7 +1,6 @@
 package com.example.foundnlost.ui.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public Long getClickedData(){
+    public Long getClickedData() {
         return data.get(expandedPosition).getUserId();
     }
 
@@ -60,6 +59,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
         public final TextView titleTextView;
         public final TextView descTextView;
         public final TextView locationTextView;
@@ -90,14 +90,12 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
             titleTextView.setText(advert.getTitle());
             descTextView.setText(advert.getDescription());
             locationTextView.setText(advert.getLocation());
-            typeTextView.setText(advert.getPostType().equals("FOUND") ? "Znaleziono:" : "Zgubiono:  ");
-            typeTextView.setTextColor(ContextCompat.getColor(context, advert.getPostType().equals("FOUND") ? R.color.sapphire : R.color.amethyst));
+            boolean isFound = advert.getPostType().equals("FOUND");
+            typeTextView.setText(isFound ? "Znaleziono:" : "Zgubiono:  ");
+            typeTextView.setTextColor(ContextCompat.getColor(context, isFound ? R.color.sapphire : R.color.amethyst));
             dateTextView.setText(advert.getDate() == null ? "nieznana" : DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
 
-            itemView.setBackgroundColor(
-                    isExpanded
-                            ? ContextCompat.getColor(context, R.color.amethyst20)
-                            : Color.TRANSPARENT);
+            itemView.setBackgroundColor(ContextCompat.getColor(context, isExpanded ? R.color.amethyst20 : R.color.transparent));
             itemView.setActivated(isExpanded);
 
             if (isExpanded) {
@@ -116,9 +114,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        View view = LayoutInflater
-                .from(viewGroup.getContext())
-                .inflate(R.layout.item_advert_card, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_advert_card, viewGroup, false);
         return new ViewHolder(view);
     }
 

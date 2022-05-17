@@ -1,5 +1,5 @@
 package com.example.foundnlost.util.interfaces;
 
-public interface onDismissListener {
+public interface OnDismissListener {
     void onDismissDialog();
 }

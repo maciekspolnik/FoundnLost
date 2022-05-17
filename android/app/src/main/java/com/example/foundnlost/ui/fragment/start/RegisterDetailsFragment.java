@@ -9,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.data.network.dto.Response;
-import com.example.foundnlost.data.network.model.Users;
+import com.example.foundnlost.data.network.dto.Resource;
+import com.example.foundnlost.data.network.dto.UserResponse;
 import com.example.foundnlost.databinding.FragmentRegisterDetailsBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.DatePickingDialog;
@@ -48,7 +48,7 @@ public class RegisterDetailsFragment extends FlowFragment {
         return binding.getRoot();
     }
 
-    private void handleResponse(Response<Users> response) {
+    private void handleResponse(Resource<UserResponse> response) {
         if (response.getMessage().equals("SUCCESS")) {
             Snackbar.make(requireView(), getText(R.string.registration_successful), Snackbar.LENGTH_LONG).show();
             onFragmentChangeRequestListener.onFragmentChangeRequest(new LoginFragment());

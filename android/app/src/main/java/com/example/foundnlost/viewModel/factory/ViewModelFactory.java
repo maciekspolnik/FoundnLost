@@ -36,7 +36,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
 
         if (modelClass.isAssignableFrom(AddAdvertDialogViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new AddAdvertDialogViewModel(databaseHelper)));
+            return Objects.requireNonNull(modelClass.cast(new AddAdvertDialogViewModel(databaseHelper, preferencesHelper)));
         }
         if (modelClass.isAssignableFrom(ChangeProfileDataViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new ChangeProfileDataViewModel(databaseHelper)));
@@ -58,12 +58,6 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
         }
         if (modelClass.isAssignableFrom(ProfileViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new ProfileViewModel(databaseHelper)));
-        }
-        if (modelClass.isAssignableFrom(ChangeProfileDataViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new ChangeProfileDataViewModel(databaseHelper)));
-        }
-        if (modelClass.isAssignableFrom(ChangeProfileDataViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new ChangeProfileDataViewModel(databaseHelper)));
         }
         if (modelClass.isAssignableFrom(ChangeProfileDataViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new ChangeProfileDataViewModel(databaseHelper)));

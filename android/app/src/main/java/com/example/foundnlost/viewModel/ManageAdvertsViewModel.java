@@ -17,7 +17,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class ManageAdvertsViewModel extends DisposableViewModel {
     private final SharedPreferences preferencesHelper;
-    private DatabaseHelper databaseHelper;
+    private final DatabaseHelper databaseHelper;
     private MutableLiveData<ArrayList<AdvertDto>> dataResponse;
     private final ApiHelper apiHelper = new ApiHelperImpl();
 

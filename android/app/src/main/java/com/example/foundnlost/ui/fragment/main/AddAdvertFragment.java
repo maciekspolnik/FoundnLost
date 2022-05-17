@@ -11,18 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.R;
-import com.example.foundnlost.commons.AdvertType;
+import com.example.foundnlost.data.network.dto.AdvertDto;
+import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.databinding.DialogAddAdvertBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.DatePickingDialog;
 import com.example.foundnlost.viewModel.AddAdvertDialogViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
+import com.google.android.material.snackbar.Snackbar;
 
 public class AddAdvertFragment extends FlowFragment {
 
     private AddAdvertDialogViewModel viewModel;
     private DialogAddAdvertBinding binding;
-    private AdvertType whichCheckbox;
+    private String whichCheckbox = "";
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,20 +36,42 @@ public class AddAdvertFragment extends FlowFragment {
 
         binding.foundRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                whichCheckbox = AdvertType.FOUND;
+                whichCheckbox = "FOUND";
                 binding.lostRadioButton.setChecked(false);
             }
         });
         binding.lostRadioButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                whichCheckbox = AdvertType.LOST;
+                whichCheckbox = "LOST";
                 binding.foundRadioButton.setChecked(false);
             }
         });
+
+        binding.saveAdvertButton.setOnClickListener(view -> {
+            if(whichCheckbox.isEmpty()){
+                return;
+            }
+            viewModel.setData(
+                    whichCheckbox,
+                    extractText(binding.titleInputLayout),
+                    extractText(binding.descInputLayout),
+                    extractText(binding.dateInputLayout),
+                    extractText(binding.locationInputLayout)
+            );
+            viewModel.addNewAdvert().observe(getViewLifecycleOwner(), this::consumeResponse);
+        });
+
+
         return binding.getRoot();
     }
 
-    private void showConfirmationAlert(){
+    private void consumeResponse(Resource<AdvertDto> response) {
+        if(response.getMessage().equals("SUCCESS")){
+            Snackbar.make(requireView(),"UDAUO SIE",Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private void showConfirmationAlert() {
         new AlertDialog.Builder(requireContext())
                 .setMessage(getString(R.string.cancel_adding_confirm))
                 .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> {

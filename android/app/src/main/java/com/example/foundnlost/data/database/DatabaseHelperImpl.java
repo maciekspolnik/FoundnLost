@@ -22,11 +22,6 @@ public class DatabaseHelperImpl implements DatabaseHelper {
     }
 
     @Override
-    public Maybe<UserEntity> validate(String name, String surname) {
-        return userDao.findByName(name, surname);
-    }
-
-    @Override
     public Completable insertUser(UserEntity userEntity) {
         return Completable.fromAction(() -> userDao.insertUser(userEntity));
     }

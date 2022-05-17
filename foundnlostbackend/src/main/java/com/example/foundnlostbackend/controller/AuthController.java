@@ -45,8 +45,11 @@ public class AuthController {
             @RequestParam(name = "token") String token) {
 
         Claims tokenClaims = jwtTokenUtil.getAllClaimsFromToken(token);
-
-        return new Response<>(HttpStatus.OK.value(), RESPONSE_SUCCESS, jwtTokenUtil.validateToken(tokenClaims, email));
+        if (!jwtTokenUtil.validateToken(tokenClaims, email)) {
+            return new Response<>(HttpStatus.UNAUTHORIZED.value(), RESPONSE_UNAUTHORISED, null);
+        }
+        Users user = userManager.findByEmail(email);
+        return new Response<>(HttpStatus.OK.value(), RESPONSE_SUCCESS, jwtTokenUtil.generateToken(user));
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
