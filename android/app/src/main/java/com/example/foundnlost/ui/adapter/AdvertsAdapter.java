@@ -95,7 +95,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
             typeTextView.setTextColor(ContextCompat.getColor(context, isFound ? R.color.sapphire : R.color.amethyst));
             dateTextView.setText(advert.getDate() == null ? "nieznana" : DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
 
-            itemView.setBackgroundColor(ContextCompat.getColor(context, isExpanded ? R.color.amethyst20 : R.color.transparent));
+            itemView.setBackgroundColor(ContextCompat.getColor(context, isExpanded ? R.color.black10 : R.color.transparent));
             itemView.setActivated(isExpanded);
 
             if (isExpanded) {

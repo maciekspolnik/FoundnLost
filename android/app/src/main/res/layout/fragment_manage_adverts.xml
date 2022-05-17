@@ -9,7 +9,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="4dp"
         android:layout_marginTop="16dp"
         android:background="@color/azure"
         app:layout_constraintEnd_toEndOf="parent"

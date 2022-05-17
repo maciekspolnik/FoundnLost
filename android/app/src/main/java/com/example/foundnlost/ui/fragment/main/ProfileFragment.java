@@ -24,10 +24,10 @@ public class ProfileFragment extends FlowFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this,new ViewModelFactory(requireContext())).get(ProfileViewModel.class);
+        viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ProfileViewModel.class);
 
         binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog().show(requireActivity().getSupportFragmentManager(), ""));
-        binding.aboutAppButton.setOnClickListener(view->onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
+        binding.aboutAppButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
 
         return binding.getRoot();
     }
