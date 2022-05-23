@@ -113,7 +113,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon_goback"
+        app:srcCompat="@drawable/icon_go_back"
         app:tint="@color/black87"
         tools:ignore="SpeakableTextPresentCheck" />
 

@@ -33,7 +33,7 @@ public class ManageAdvertsFragment extends FlowFragment {
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ManageAdvertsViewModel.class);
         binding = FragmentManageAdvertsBinding.inflate(inflater, container, false);
         binding.myAdvertsRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        viewModel.getAdvertData().observe(getViewLifecycleOwner(),this::consumeResponse);
+        viewModel.getAdvertData().observe(getViewLifecycleOwner(), this::consumeResponse);
 
         setCloseButtonClickAction();
 

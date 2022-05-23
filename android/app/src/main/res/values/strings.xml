@@ -61,4 +61,6 @@
     <string name="delete_advert_confirm">Czy na pewno chcesz usunąć ogłoszenie?</string>
     <string name="registration_successful">Rejestracja przebiega pomyślnie</string>
     <string name="error_api">Nie udało się połączyć. Spróbuj ponownie.</string>
+    <string name="example_email">email@email.com</string>
+    <string name="unknown_date">Nieznana data</string>
 </resources>

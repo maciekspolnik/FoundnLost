@@ -16,6 +16,7 @@ import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.databinding.DialogAddAdvertBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.DatePickingDialog;
+import com.example.foundnlost.util.Const;
 import com.example.foundnlost.viewModel.AddAdvertDialogViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 import com.google.android.material.snackbar.Snackbar;
@@ -24,7 +25,7 @@ public class AddAdvertFragment extends FlowFragment {
 
     private AddAdvertDialogViewModel viewModel;
     private DialogAddAdvertBinding binding;
-    private String whichCheckbox = "";
+    private String whichCheckbox = Const.EMPTY_STRING;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

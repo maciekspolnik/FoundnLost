@@ -10,33 +10,28 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.databinding.DialogContactInfoBinding;
-import com.example.foundnlost.viewModel.ContactInfoDialogViewModel;
-import com.example.foundnlost.viewModel.factory.ViewModelFactory;
+import com.example.foundnlost.util.Const;
 
 public class ContactInfoDialog extends DialogFragment {
-
-    private ContactInfoDialogViewModel viewModel;
     private DialogContactInfoBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ContactInfoDialogViewModel.class);
         Bundle bundle = getArguments();
         binding = DialogContactInfoBinding.inflate(inflater, container, false);
 
-        binding.emailTextView.setText(bundle.getString("email"));
-        binding.button.setOnClickListener(view -> callPhoneNumber(bundle.getString("phoneNumber", "")));
+        binding.emailTextView.setText(bundle != null ? bundle.getString("email") : Const.EMPTY_STRING);
+        binding.button.setOnClickListener(view -> callPhoneNumber(bundle != null ? bundle.getString("phoneNumber", Const.EMPTY_STRING) : null));
 
         return binding.getRoot();
     }
 
     private void callPhoneNumber(String phone) {
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        callIntent.setData(Uri.parse("tel:" + phone));
+        callIntent.setData(Uri.parse(Const.DIALING_PREFIX + phone));
         startActivity(callIntent);
     }
 

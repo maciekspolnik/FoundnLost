@@ -18,6 +18,8 @@ public abstract class Const {
     public static final Integer MIN_PASSWORD_LENGTH = 8;
     public static final Integer MAX_PASSWORD_LENGTH = 32;
 
+    public static final String DIALING_PREFIX = "tel:";
+    public static final String EMPTY_STRING = "";
     public static final String API_SUCCESS = "SUCCESS";
 
 }

@@ -18,6 +18,7 @@ import com.example.foundnlost.data.network.dto.Resource;
 import com.example.foundnlost.databinding.FragmentAdvertsBinding;
 import com.example.foundnlost.ui.adapter.AdvertsAdapter;
 import com.example.foundnlost.ui.fragment.dialog.ContactInfoDialog;
+import com.example.foundnlost.util.Const;
 import com.example.foundnlost.viewModel.MainViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 
@@ -27,9 +28,9 @@ import java.util.List;
 public class AdvertsFragment extends Fragment {
 
     private MainViewModel viewModel;
-    private FragmentAdvertsBinding binding;
+    protected FragmentAdvertsBinding binding;
     private AdvertsAdapter adapter;
-    private ArrayList<AdvertDto> list = new ArrayList<>();
+    private final ArrayList<AdvertDto> list = new ArrayList<>();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,35 +38,29 @@ public class AdvertsFragment extends Fragment {
         binding = FragmentAdvertsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(MainViewModel.class);
         binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new AdvertsAdapter(
-                list,
-                requireContext(),
-                view -> viewModel.getContactData(adapter.getClickedData()).observe(getViewLifecycleOwner(), this::consumeDataResponse));
-        adapter.setDrawable(R.drawable.icon_goback);
+        adapter = new AdvertsAdapter(list, requireContext(),
+                view -> viewModel.getContactData(adapter.getClickedData()).observe(getViewLifecycleOwner(), this::consumeUserDataResponse));
+        adapter.setDrawable(R.drawable.icon_go_back);
         binding.mainRecyclerView.setAdapter(adapter);
-        loadAdverts();
+        viewModel.getAdvertData().observe(getViewLifecycleOwner(), this::consumeAdvertListResponse);
 
         return binding.getRoot();
     }
 
-    private void consumeDataResponse(Resource<ContactDataDto> response) {
+    private void consumeUserDataResponse(Resource<ContactDataDto> response) {
         ContactInfoDialog dialog = new ContactInfoDialog();
         Bundle arguments = new Bundle();
-        arguments.putString("email",response.getResult().getEmail());
-        arguments.putString("phoneNumber",response.getResult().getPhoneNumber());
+        arguments.putString("email", response.getResult().getEmail());
+        arguments.putString("phoneNumber", response.getResult().getPhoneNumber());
         dialog.setArguments(arguments);
-        dialog.show(requireActivity().getSupportFragmentManager(), "");
+        dialog.show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING);
     }
 
-
-    private void loadAdverts() {
-        viewModel.getAdvertData().observe(getViewLifecycleOwner(), this::consumeResponse);
-    }
-
-    private void consumeResponse(List<AdvertDto> listResponse) {
-        if (listResponse == null || listResponse.isEmpty()) {
-            return;
+    private void consumeAdvertListResponse(List<AdvertDto> listResponse) {
+        if (listResponse != null && !listResponse.isEmpty()) {
+            list.clear();
+            list.addAll(listResponse);
+            adapter.updateData(listResponse);
         }
-        adapter.updateData(listResponse);
     }
 }

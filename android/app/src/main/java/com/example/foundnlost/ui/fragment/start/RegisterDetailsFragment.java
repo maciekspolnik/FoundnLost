@@ -39,7 +39,6 @@ public class RegisterDetailsFragment extends FlowFragment {
                         extractText(binding.registerDetailsPhoneInputLayout),
                         extractText(binding.registerDetailsDateInputLayout)
                 );
-                viewModel.saveUserToDatabase();
                 viewModel.register().observe(getViewLifecycleOwner(), this::handleResponse);
             }
 

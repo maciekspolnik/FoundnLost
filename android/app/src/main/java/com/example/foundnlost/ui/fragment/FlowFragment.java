@@ -3,6 +3,7 @@ package com.example.foundnlost.ui.fragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.R;
+import com.example.foundnlost.util.Const;
 import com.example.foundnlost.util.ValidationUtil;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,7 +29,7 @@ public abstract class FlowFragment extends Fragment {
         if (textInputLayout.getEditText() != null) {
             return textInputLayout.getEditText().getText().toString();
         }
-        return "";
+        return Const.EMPTY_STRING;
     }
 
     protected boolean isNotEmpty(TextInputLayout layout) {

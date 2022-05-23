@@ -16,6 +16,7 @@ import com.example.foundnlost.databinding.FragmentLoginBinding;
 import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.ForgotPasswordDialog;
+import com.example.foundnlost.util.Const;
 import com.example.foundnlost.util.TextChangedWatcher;
 import com.example.foundnlost.util.ValidationUtil;
 import com.example.foundnlost.viewModel.LoginViewModel;
@@ -36,7 +37,7 @@ public class LoginFragment extends FlowFragment {
 
         binding.appHeader.setBackClickedListener(view -> requireActivity().onBackPressed());
         binding.forgotPasswordTextButton.setOnClickListener(view -> new ForgotPasswordDialog().
-                show(requireActivity().getSupportFragmentManager(), ""));
+                show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING));
 
         binding.loginEmailEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.loginEmailTextInputLayout)));
         binding.loginPasswordEditText.addTextChangedListener(new TextChangedWatcher((s, start, before, count) -> isNotEmpty(binding.loginPasswordTextInputLayout)));

@@ -93,7 +93,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
             boolean isFound = advert.getPostType().equals("FOUND");
             typeTextView.setText(isFound ? "Znaleziono:" : "Zgubiono:  ");
             typeTextView.setTextColor(ContextCompat.getColor(context, isFound ? R.color.sapphire : R.color.amethyst));
-            dateTextView.setText(advert.getDate() == null ? "nieznana" : DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
+            dateTextView.setText(advert.getDate() == null ? context.getString(R.string.unknown_date) : DateFormat.getDateInstance(DateFormat.FULL).format(advert.getDate()));
 
             itemView.setBackgroundColor(ContextCompat.getColor(context, isExpanded ? R.color.black10 : R.color.transparent));
             itemView.setActivated(isExpanded);

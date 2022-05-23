@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.foundnlost.databinding.FragmentProfileBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.ChangeProfileDataDialog;
+import com.example.foundnlost.util.Const;
 import com.example.foundnlost.viewModel.ProfileViewModel;
 import com.example.foundnlost.viewModel.factory.ViewModelFactory;
 
@@ -26,7 +27,7 @@ public class ProfileFragment extends FlowFragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(ProfileViewModel.class);
 
-        binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog().show(requireActivity().getSupportFragmentManager(), ""));
+        binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog().show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING));
         binding.aboutAppButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
 
         return binding.getRoot();

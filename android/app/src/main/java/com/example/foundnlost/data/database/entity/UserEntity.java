@@ -18,7 +18,7 @@ public class UserEntity {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
-    public int userId;
+    public Long userId;
 
     @ColumnInfo(name = "email")
     public String email;
