@@ -57,6 +57,12 @@ public class ApiHelperImpl implements ApiHelper {
     }
 
     @Override
+    public Single<UserDto> getUsersById(Long id) {
+        ApiService apiService = RetrofitClient.getInstance().getApiService();
+        return apiService.getUserById(id);
+    }
+
+    @Override
     public Single<List<AdvertDto>> getAllAdverts() {
         ApiService apiService = RetrofitClient.getInstance().getApiService();
         return apiService.getAllAdverts();

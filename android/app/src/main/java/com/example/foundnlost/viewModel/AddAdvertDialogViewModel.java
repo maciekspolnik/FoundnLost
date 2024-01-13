@@ -59,6 +59,9 @@ public class AddAdvertDialogViewModel extends DisposableViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response -> dataResponse.setValue(response), System.out::println));
+
+
+
         return dataResponse;
     }
 

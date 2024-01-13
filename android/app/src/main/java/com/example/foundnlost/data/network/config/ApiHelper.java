@@ -29,6 +29,8 @@ public interface ApiHelper {
 
     Single<ArrayList<AdvertDto>> getAdvertsById(Long id);
 
+    Single<UserDto> getUsersById(Long id);
+
     Single<List<AdvertDto>> getAllAdverts();
 
 }

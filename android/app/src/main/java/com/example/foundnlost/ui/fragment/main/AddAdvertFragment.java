@@ -68,7 +68,7 @@ public class AddAdvertFragment extends FlowFragment {
 
     private void consumeResponse(Resource<AdvertDto> response) {
         if(response.getMessage().equals("SUCCESS")){
-            Snackbar.make(requireView(),"UDAUO SIE",Snackbar.LENGTH_LONG).show();
+            requireActivity().onBackPressed();
         }
     }
 

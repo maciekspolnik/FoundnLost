@@ -52,7 +52,7 @@ public class ManageAdvertsFragment extends FlowFragment {
     private void showConfirmationAlert() {
         new AlertDialog.Builder(requireContext())
                 .setMessage(getString(R.string.delete_advert_confirm))
-                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> viewModel.deleteAdvert(adapter.returnPosition()))
+                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> viewModel.deleteAdvert(adapter.getClickedData()))
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }

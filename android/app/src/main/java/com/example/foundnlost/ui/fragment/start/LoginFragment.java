@@ -48,14 +48,17 @@ public class LoginFragment extends FlowFragment {
     private void onLoginClicked() {
         if (isNotEmpty(binding.loginEmailTextInputLayout)
                 && isNotEmpty(binding.loginPasswordTextInputLayout)
-                && ValidationUtil.isEmailValid(extractText(binding.loginEmailTextInputLayout))
-                && ValidationUtil.isPasswordValid(extractText(binding.loginPasswordTextInputLayout))) {
+                && ValidationUtil.isEmailValid(extractText(binding.loginEmailTextInputLayout))) {
             viewModel.setLoginDetails(extractText(binding.loginEmailTextInputLayout), extractText(binding.loginPasswordTextInputLayout));
             viewModel.login().observe(getViewLifecycleOwner(), this::handleResponse);
         }
     }
 
     private void handleResponse(Resource<String> response) {
+
+
+
+
         switch ((response.getMessage())) {
             case "SUCCESS":
                 Intent intent = new Intent(requireActivity(), MainActivity.class);

@@ -10,4 +10,10 @@ public class ProfileViewModel extends ViewModel {
     public ProfileViewModel(DatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
     }
+
+
+    public void logout(){
+        databaseHelper.clearDatabase();
+    }
+
 }

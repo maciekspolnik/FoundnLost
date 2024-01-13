@@ -4,9 +4,9 @@ import com.auth0.android.jwt.JWT;
 
 public abstract class JwtUtil {
 
-    public static Integer decodeUserInfo(String token) {
+    public static Long decodeUserInfo(String token) {
         JWT jwt = new JWT(token);
-        return jwt.getClaim("uuid").asInt();
+        return jwt.getClaim("uuid").asLong();
     }
 
 }

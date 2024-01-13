@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.foundnlost.data.database.dao.UserDao;
 import com.example.foundnlost.data.database.entity.UserEntity;
 
+import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Maybe;
 
@@ -33,7 +34,11 @@ public class DatabaseHelperImpl implements DatabaseHelper {
 
     @Override
     public Completable deleteUser(UserEntity userEntity) {
-        return Completable.fromAction(()->userDao.deleteUser(userEntity));
+        return Completable.fromAction(() -> userDao.deleteUser(userEntity));
 
+    }
+
+    public @NonNull Completable clearDatabase() {
+        return Completable.fromAction(userDao::deleteAllUsers);
     }
 }

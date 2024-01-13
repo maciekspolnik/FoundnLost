@@ -2,10 +2,10 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b910368b69be7cd604af42d31c10447f",
+    "identityHash": "5e1bce3647e5bc851c35a5ddffc49f63",
     "entities": [
       {
-        "tableName": "UserEntity",
+        "tableName": "users",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT, `email` TEXT, `password` TEXT, `name` TEXT, `surname` TEXT, `phone_number` TEXT, `date_of_birth` TEXT)",
         "fields": [
           {
@@ -64,7 +64,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b910368b69be7cd604af42d31c10447f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '5e1bce3647e5bc851c35a5ddffc49f63')"
     ]
   }
 }

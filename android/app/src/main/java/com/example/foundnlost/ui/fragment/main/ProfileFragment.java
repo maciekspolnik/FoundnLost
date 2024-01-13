@@ -30,6 +30,8 @@ public class ProfileFragment extends FlowFragment {
         binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog().show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING));
         binding.aboutAppButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
 
+        binding.logoutButton.setOnClickListener(view -> viewModel.logout());
+
         return binding.getRoot();
     }
 }

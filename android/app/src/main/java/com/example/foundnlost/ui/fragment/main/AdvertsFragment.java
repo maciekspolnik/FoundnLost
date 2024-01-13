@@ -37,6 +37,7 @@ public class AdvertsFragment extends Fragment {
 
         binding = FragmentAdvertsBinding.inflate(inflater, container, false);
         viewModel = new ViewModelProvider(this, new ViewModelFactory(requireContext())).get(MainViewModel.class);
+
         binding.mainRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new AdvertsAdapter(list, requireContext(),
                 view -> viewModel.getContactData(adapter.getClickedData()).observe(getViewLifecycleOwner(), this::consumeUserDataResponse));

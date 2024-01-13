@@ -30,7 +30,7 @@ public interface ApiService {
     Single<Resource<Boolean>> isTokenValid(@Query("email") String email, @Query("token") String token);
 
     @GET("users/")
-    Single<UserDto> getUserById(@Query("index") int index);
+    Single<UserDto> getUserById(@Query("index") Long index);
 
     @GET("users/contact_data")
     Single<Resource<ContactDataDto>> getContactData(@Query("index") Long index);
@@ -39,7 +39,7 @@ public interface ApiService {
     Single<Resource<AdvertDto>> addAdvert(@Body NewAdvert advert);
 
     @DELETE("advert/")
-    Single<AdvertDto> deleteAdvert(Long id);
+    Single<AdvertDto> deleteAdvert(@Query("index") Long id);
 
     @GET("advert/find_by_id")
     Single<ArrayList<AdvertDto>> getAdvertsById(@Query("index") Long id);

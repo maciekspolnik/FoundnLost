@@ -22,11 +22,13 @@ public interface UserDao {
     @Delete
     void deleteUser(UserEntity user);
 
-    @Query("SELECT * FROM UserEntity WHERE user_id = :id")
+    @Query("SELECT * FROM users WHERE user_id = :id")
     Maybe<UserEntity> findById(Integer id);
 
-    @Query("SELECT * FROM UserEntity WHERE name LIKE :name AND surname LIKE :surname LIMIT 1")
+    @Query("SELECT * FROM users WHERE name LIKE :name AND surname LIKE :surname LIMIT 1")
     Maybe<UserEntity> findByName(String name, String surname);
 
+    @Query("DELETE FROM users")
+    void deleteAllUsers();
 
 }

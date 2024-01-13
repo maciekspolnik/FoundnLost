@@ -31,15 +31,17 @@ public class ManageAdvertsViewModel extends DisposableViewModel {
             dataResponse = new MutableLiveData<>();
         }
 
-        addDisposable(apiHelper.getAdvertsById(1L)
+
+
+        addDisposable(apiHelper.getAdvertsById(preferencesHelper.getLong("userId",0))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listResponse -> dataResponse.setValue(listResponse), System.out::println));
         return dataResponse;
     }
 
-    public void deleteAdvert(int position) {
-        addDisposable(apiHelper.deleteAdvert((long) position)
+    public void deleteAdvert(long position) {
+        addDisposable(apiHelper.deleteAdvert(position)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(System.out::println, System.out::println));

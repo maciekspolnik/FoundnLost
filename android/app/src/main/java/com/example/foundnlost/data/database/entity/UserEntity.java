@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
+@Entity(tableName = "users")
 public class UserEntity {
 
     @PrimaryKey(autoGenerate = true)
