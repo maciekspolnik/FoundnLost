@@ -57,7 +57,7 @@ public class ViewModelFactory implements ViewModelProvider.Factory {
             return Objects.requireNonNull(modelClass.cast(new RegisterViewModel(databaseHelper)));
         }
         if (modelClass.isAssignableFrom(ProfileViewModel.class)) {
-            return Objects.requireNonNull(modelClass.cast(new ProfileViewModel(databaseHelper)));
+            return Objects.requireNonNull(modelClass.cast(new ProfileViewModel(databaseHelper, preferencesHelper)));
         }
         if (modelClass.isAssignableFrom(ChangeProfileDataViewModel.class)) {
             return Objects.requireNonNull(modelClass.cast(new ChangeProfileDataViewModel(databaseHelper)));

@@ -1,5 +1,8 @@
 package com.example.foundnlost.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.foundnlost.R;
+import com.example.foundnlost.data.database.AppDatabase;
 import com.example.foundnlost.databinding.ActivityMainBinding;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.main.AdvertsFragment;
@@ -84,9 +88,10 @@ public class MainActivity extends AppCompatActivity implements FlowFragment.OnFr
             }
         });
     }
+
     @Override
     public void onFragmentChangeRequest(Fragment fragment) {
-        if(fragment instanceof DialogFragment){
+        if (fragment instanceof DialogFragment) {
             ((DialogFragment) fragment).show(getSupportFragmentManager(), null);
         }
         displayFragment(fragment);
@@ -128,4 +133,14 @@ public class MainActivity extends AppCompatActivity implements FlowFragment.OnFr
         }
         return false;
     };
+
+    public void logout() {
+        getSharedPreferences("pref_file", Context.MODE_PRIVATE).edit().clear().apply();
+        AsyncTask.execute(() -> {
+            AppDatabase.getInstance(this).clearAllTables();
+        });
+        startActivity(new Intent(getApplicationContext(), StartActivity.class));
+        finish();
+    }
+
 }

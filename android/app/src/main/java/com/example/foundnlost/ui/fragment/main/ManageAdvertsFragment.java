@@ -35,7 +35,7 @@ public class ManageAdvertsFragment extends FlowFragment {
         binding.myAdvertsRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         viewModel.getAdvertData().observe(getViewLifecycleOwner(), this::consumeResponse);
 
-        setCloseButtonClickAction();
+        binding.advertsButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment()));
 
         return binding.getRoot();
     }
@@ -50,16 +50,13 @@ public class ManageAdvertsFragment extends FlowFragment {
     }
 
     private void showConfirmationAlert() {
+        AdvertsAdapter.ViewHolder view = (AdvertsAdapter.ViewHolder) binding.myAdvertsRecyclerView.findViewHolderForAdapterPosition(adapter.returnPosition());
+        Long id = view.getAdvertId();
         new AlertDialog.Builder(requireContext())
                 .setMessage(getString(R.string.delete_advert_confirm))
-                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> viewModel.deleteAdvert(adapter.getClickedData()))
+                .setPositiveButton(getString(R.string.confirm), (dialog, arg) -> viewModel.deleteAdvert(id))
                 .setNegativeButton(getString(R.string.cancel), null)
                 .show();
     }
-
-    private void setCloseButtonClickAction() {
-        binding.advertsButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AddAdvertFragment()));
-    }
-
 
 }

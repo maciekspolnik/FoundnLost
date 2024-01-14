@@ -59,7 +59,11 @@ public class LoginViewModel extends DisposableViewModel {
 
         loginResponse.setValue(response);
         SharedPreferences.Editor editor = preferences.edit();
+        if (response.getResult() == null) {
+            return;
+        }
         uuid = JwtUtil.decodeUserInfo(response.getResult());
+
         editor.putLong("userId", uuid);
         editor.putString("userToken", response.getResult()).apply();
         editor.apply();
@@ -67,7 +71,7 @@ public class LoginViewModel extends DisposableViewModel {
         addDisposable(apiHelper.getUsersById(uuid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::addToDatabase, (e) -> Timber.d(e.toString())));
+                .subscribe(this::addToDatabase, (e) -> Timber.e(e.toString())));
     }
 
     private void addToDatabase(UserDto userDto) {

@@ -1,5 +1,6 @@
 package com.example.foundnlost.viewModel;
 
+import android.content.SharedPreferences;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.foundnlost.data.database.DatabaseHelper;
@@ -19,6 +20,7 @@ public class RegisterViewModel extends DisposableViewModel {
 
     private final DatabaseHelper databaseHelper;
     private final ApiHelper apiHelper = new ApiHelperImpl();
+
 
     private String email;
     private String password;
@@ -48,10 +50,10 @@ public class RegisterViewModel extends DisposableViewModel {
 
     private void consumeResponse(Resource<UserResponse> response) {
         registrationResponse.setValue(response);
-        addDisposable(databaseHelper.insertUser(Mapper.getUserEntity(response.getResult()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(() -> Timber.d("Successfully inserted user")));
+//        addDisposable(databaseHelper.insertUser(Mapper.getUserEntity(response.getResult()))
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(() -> Timber.d("Successfully inserted user")));
 
     }
 

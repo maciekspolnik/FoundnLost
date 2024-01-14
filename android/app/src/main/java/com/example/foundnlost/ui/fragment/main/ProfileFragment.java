@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.foundnlost.databinding.FragmentProfileBinding;
+import com.example.foundnlost.ui.activity.MainActivity;
 import com.example.foundnlost.ui.fragment.FlowFragment;
 import com.example.foundnlost.ui.fragment.dialog.ChangeProfileDataDialog;
 import com.example.foundnlost.util.Const;
@@ -30,7 +31,9 @@ public class ProfileFragment extends FlowFragment {
         binding.editDataButton.setOnClickListener(view -> new ChangeProfileDataDialog().show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING));
         binding.aboutAppButton.setOnClickListener(view -> onFragmentChangeRequestListener.onFragmentChangeRequest(new AboutFragment()));
 
-        binding.logoutButton.setOnClickListener(view -> viewModel.logout());
+        binding.logoutButton.setOnClickListener(view -> {
+            ((MainActivity) requireActivity()).logout();
+        });
 
         return binding.getRoot();
     }

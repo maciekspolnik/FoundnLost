@@ -16,13 +16,14 @@ public class AdvertMapper {
                 data.getPostType(),
                 data.getTitle(),
                 data.getDescription(),
-                null,
+                data.getDate(),
                 data.getLocation()
         );
     }
 
     public static AdvertData mapToAdvertData(Advert advert) {
         return new AdvertData(
+                advert.getAdvertId(),
                 advert.getUser().getUsersId(),
                 advert.getPostType(),
                 advert.getTitle(),

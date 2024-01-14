@@ -9,6 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class AdvertData {
 
+    private Long advertId;
     private Long userId;
     private String postType;
     private String title;

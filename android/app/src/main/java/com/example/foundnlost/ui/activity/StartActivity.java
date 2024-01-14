@@ -25,6 +25,7 @@ public class StartActivity extends AppCompatActivity implements FlowFragment.OnF
         View view = binding.getRoot();
         setContentView(view);
         addFragmentOnAttachListener();
+
         displayFragment(new StartFragment());
     }
 

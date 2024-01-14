@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class AdvertDto {
-
+    private Long advertId;
     private Long userId;
     private String postType;
     private String title;

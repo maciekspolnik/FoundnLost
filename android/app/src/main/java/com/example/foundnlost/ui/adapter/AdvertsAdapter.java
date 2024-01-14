@@ -50,6 +50,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
     }
 
 
+
     public int returnPosition() {
         int result = expandedPosition;
         data.remove(expandedPosition);
@@ -60,6 +61,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        private AdvertDto advert;
         public final TextView titleTextView;
         public final TextView descTextView;
         public final TextView locationTextView;
@@ -80,7 +82,7 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
         }
 
         private void bindData(int position) {
-            AdvertDto advert = data.get(position);
+            advert = data.get(position);
             infoButton.setImageResource(drawable);
             final boolean isExpanded = position == expandedPosition;
             descTextView.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
@@ -109,6 +111,12 @@ public class AdvertsAdapter extends RecyclerView.Adapter<AdvertsAdapter.ViewHold
                 notifyItemChanged(position);
             });
         }
+
+
+        public Long getAdvertId(){
+            return advert.getAdvertId();
+        }
+
     }
 
     @NonNull

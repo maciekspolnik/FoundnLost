@@ -49,7 +49,6 @@ public class RegisterDetailsFragment extends FlowFragment {
 
     private void handleResponse(Resource<UserResponse> response) {
         if (response.getMessage().equals("SUCCESS")) {
-            Snackbar.make(requireView(), getText(R.string.registration_successful), Snackbar.LENGTH_LONG).show();
             onFragmentChangeRequestListener.onFragmentChangeRequest(new LoginFragment());
             return;
         }

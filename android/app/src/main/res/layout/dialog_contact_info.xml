@@ -7,6 +7,14 @@
     android:padding="24dp"
     tools:context=".ui.fragment.dialog.ContactInfoDialog">
 
+    <Button
+            android:id="@+id/button2"
+            style="@style/primaryButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Wyślij Email"
+            app:layout_constraintTop_toBottomOf="@+id/titleBanner" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"/>
     <TextView
         android:id="@+id/titleBanner"
         style="@style/textBanner"
@@ -19,42 +27,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/write_email"
-        android:textColor="@color/black70"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleBanner" />
-
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/example_email"
-        android:textColor="@color/azure"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/or"
-        android:textColor="@color/black70"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/or"
+            android:textColor="@color/black70"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" android:layout_marginTop="24dp"/>
 
     <View
         android:id="@+id/div1"

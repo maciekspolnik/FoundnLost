@@ -19,8 +19,8 @@ public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void updateUser(UserEntity userEntity);
 
-    @Delete
-    void deleteUser(UserEntity user);
+    @Query("DELETE FROM users WHERE user_id = :id")
+    void deleteUser(Long id);
 
     @Query("SELECT * FROM users WHERE user_id = :id")
     Maybe<UserEntity> findById(Integer id);
@@ -28,7 +28,5 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE name LIKE :name AND surname LIKE :surname LIMIT 1")
     Maybe<UserEntity> findByName(String name, String surname);
 
-    @Query("DELETE FROM users")
-    void deleteAllUsers();
 
 }

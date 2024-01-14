@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class ManageAdvertsViewModel extends DisposableViewModel {
     private final SharedPreferences preferencesHelper;
@@ -36,7 +37,7 @@ public class ManageAdvertsViewModel extends DisposableViewModel {
         addDisposable(apiHelper.getAdvertsById(preferencesHelper.getLong("userId",0))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(listResponse -> dataResponse.setValue(listResponse), System.out::println));
+                .subscribe(listResponse -> dataResponse.setValue(listResponse), (e) -> Timber.e(e.toString())));
         return dataResponse;
     }
 
@@ -44,6 +45,6 @@ public class ManageAdvertsViewModel extends DisposableViewModel {
         addDisposable(apiHelper.deleteAdvert(position)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(System.out::println, System.out::println));
+                .subscribe(System.out::println, (e) -> Timber.e(e.toString())));
     }
 }

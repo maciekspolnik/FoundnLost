@@ -33,12 +33,9 @@ public class DatabaseHelperImpl implements DatabaseHelper {
     }
 
     @Override
-    public Completable deleteUser(UserEntity userEntity) {
-        return Completable.fromAction(() -> userDao.deleteUser(userEntity));
+    public Completable deleteUserById(Long index) {
+        return Completable.fromAction(() -> userDao.deleteUser(index));
 
     }
 
-    public @NonNull Completable clearDatabase() {
-        return Completable.fromAction(userDao::deleteAllUsers);
-    }
 }

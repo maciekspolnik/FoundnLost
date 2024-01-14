@@ -16,6 +16,7 @@ import java.util.Date;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import timber.log.Timber;
 
 public class AddAdvertDialogViewModel extends DisposableViewModel {
     private final SharedPreferences preferencesHelper;
@@ -58,7 +59,7 @@ public class AddAdvertDialogViewModel extends DisposableViewModel {
         addDisposable(apiHelper.addAdvert(advertDto)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(response -> dataResponse.setValue(response), System.out::println));
+                .subscribe(response -> dataResponse.setValue(response), (e) -> Timber.e(e.toString())));
 
 
 
