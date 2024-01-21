@@ -31,6 +31,7 @@ public class AdvertsFragment extends Fragment {
     protected FragmentAdvertsBinding binding;
     private AdvertsAdapter adapter;
     private final ArrayList<AdvertDto> list = new ArrayList<>();
+    private final ContactInfoDialog dialog = new ContactInfoDialog();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -49,12 +50,15 @@ public class AdvertsFragment extends Fragment {
     }
 
     private void consumeUserDataResponse(Resource<ContactDataDto> response) {
-        ContactInfoDialog dialog = new ContactInfoDialog();
+        if (dialog.isVisible() || dialog.isAdded()) {
+            return;
+        }
         Bundle arguments = new Bundle();
         arguments.putString("email", response.getResult().getEmail());
         arguments.putString("phoneNumber", response.getResult().getPhoneNumber());
         dialog.setArguments(arguments);
         dialog.show(requireActivity().getSupportFragmentManager(), Const.EMPTY_STRING);
+
     }
 
     private void consumeAdvertListResponse(List<AdvertDto> listResponse) {
